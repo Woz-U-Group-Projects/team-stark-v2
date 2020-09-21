@@ -1,4 +1,4 @@
-package com.example.groupproject.auth;
+package com.example.groupproject.controllers;
 
 import java.util.ArrayList;
 import java.util.List;

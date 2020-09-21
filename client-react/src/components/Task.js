@@ -43,7 +43,8 @@ class Task extends React.Component {
         <button type="button" className="btn btn-primary" onClick={this.addTask}>add</button>
         <ul>
           {this.state.tasks.map(p => (
-            <li key={p.taskid}>
+            <li key={p.taskid}>  
+            {/* THIS IS "COMPLETE" Task DATABASE FIELD-Sheila note */}
               {p.name} : { p.complete ? "complete" : "not complete" } <button type="button" className="btn btn-success">Complete</button><button type="button" className="btn btn-danger">Delete</button>
             </li>
           ))}
