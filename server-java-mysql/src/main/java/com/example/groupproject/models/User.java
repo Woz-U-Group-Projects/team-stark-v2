@@ -28,7 +28,7 @@ public class User {
 	 * @return the id
 	 */
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class User {
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
@@ -50,7 +50,7 @@ public class User {
 	 * @return the username
 	 */
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 
 	/**
