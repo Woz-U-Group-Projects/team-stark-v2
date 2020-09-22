@@ -7,6 +7,7 @@ class User extends React.Component {
     super(props);
     this.state = { User: [] };
     this.username = React.createRef();
+    this.password = React.createRef();
 
   }
 
@@ -28,12 +29,12 @@ class User extends React.Component {
 
   addUser = () => {
     let url = "http://localhost:8080/users";
-    axios.post(url, { username: this.username.current.value }).then(response => {
+    axios.post(url, { username: this.username.current.value } , { password: this.password.current.value }).then(response => {
       // refresh the data
       this.getData();
       // empty the input
       this.username.current.value = "";
-      // this.password.current.value = "";
+      this.password.current.value = "";
     });
   };
 
@@ -41,11 +42,11 @@ class User extends React.Component {
   render() {
     return (
       <div>
-        <h3>Bill Payment and Budget Tool</h3>
+        <h4>Bill Payment and Budget Tool</h4>
         <h3>Create User Account</h3>
-        <input ref={this.username} />
-        {/* <input ref={this.password} /> */}
-        <button type="button" className="btn btn-primary" onClick={this.addUser}>add</button>
+        <input ref={this.username} /><br></br>
+        <input ref={this.password} />
+        <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>
         {/* <ul>
           {this.state.User.map(p => (
             <li key={p.userid}>  
