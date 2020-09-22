@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import '../index.css';
+import '../task.min.css'
 
 class User extends React.Component {
   constructor(props) {
@@ -29,57 +30,61 @@ class User extends React.Component {
 
   addUser = () => {
     let url = "http://localhost:8080/users";
-    axios.post(url, { username: this.username.current.value } , { password: this.password.current.value }).then(response => {
+    axios.post(url, { username: this.username.current.value } ).then(response => {
       // refresh the data
       this.getData();
       // empty the input
       this.username.current.value = "";
+    });
+    axios.post(url, { password: this.password.current.value } ).then(response => {
+      // refresh the data
+      this.getData();
+      // empty the input
       this.password.current.value = "";
     });
   };
 
+// removeUser =() => {
+//   let url = "http://localhost:8080/users";
+//     axios.delete(url, { username: this.username.current.value } , { password: this.password.current.value }).then(response => {
+//       // refresh the data
+//       this.getData();
+//       // empty the input
+//       this.username.current.value = "";
+//       this.password.current.value = "";
+//     });
+// };
+  
 
   render() {
     return (
       <div>
-        <h4>Bill Payment and Budget Tool</h4>
+        <h2>Bill Payment and Budget Tool</h2>
         <h3>Create User Account</h3>
-        <input ref={this.username} /><br></br>
-        <input ref={this.password} />
+        <label> Email Address:
+        <input className="form-control" ref={this.username} type="text" />
+        </label>
+        <br></br>
+        <label> Password:
+        <input className="form-control" ref={this.password} type="password" />
+        </label>
+        <br></br>
         <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>
-        {/* <ul>
-          {this.state.User.map(p => (
+        <ul>
+          {/* {this.state.User.map(p => (
             <li key={p.userid}>  
             THIS IS "COMPLETE" Task DATABASE FIELD-Sheila note
-              {p.username} : { p.complete ? "complete" : "not complete" } <button type="button" className="btn btn-success">Complete</button><button type="button" className="btn btn-danger">Delete</button>
+              {p.username} , { p.password ? "complete" : "not complete" } 
+              <button type="button" className="btn btn-success">Complete</button>
+              <button type="button" className="btn btn-danger"onClick={this.removeUser}>Delete</button>
             </li>
-          ))}
-        </ul> */}
+          ))} */}
+        </ul>
       </div>
     );
   }
 }
+ 
+
 
 export default User;
-// render() {
-//   if (!this.props.token || this.props.token === "") {
-//        return (
-//          <div>
-//            <div style={{color: "red"}}>{(this.props.error ? this.props.error: '')}</div>
-//            <div>
-//              <label htmlFor="username">Username:</label>
-//              <input type="text" id="username" name="username" onChange={this.props.onUsernameChange} />
-//            </div>
-//            <div>
-//              <label htmlFor="password">Password:</label>
-//              <input type="password" id="password" name="password" onChange={this.props.onPasswordChange} />
-//            </div>
-//            <div>
-//              <button onClick={this.props.onLogin}>Submit</button>
-//            </div>
-//          </div>
-//        );
-//      } else { return (<div>Logged In</div>); }
-//    }
-//  }
-//  export default User;
