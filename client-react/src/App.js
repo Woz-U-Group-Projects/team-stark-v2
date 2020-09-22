@@ -1,17 +1,17 @@
 import React from "react";
-import Task from "./components/Task";
+// import Task from "./components/Task";
 import User from "./components/User"; //CODE WE ADDED
-import Customer from "./components/Customer";
+// import Customer from "./components/Customer";
 import "./App.css";
-import Values from "./components/Values";
+// import Values from "./components/Values";
 
 function App() {
   return (
     <div className="App">
-      <Task />
+      {/* <Task /> */}
       <User />  {/* DOES THIS GET ADDED? */}
-      <Customer />
-      <Values />
+      {/* <Customer />
+      <Values /> */}
     </div>
   );
 }
