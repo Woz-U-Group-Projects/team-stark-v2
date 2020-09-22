@@ -30,17 +30,11 @@ class User extends React.Component {
 
   addUser = () => {
     let url = "http://localhost:8080/users";
-    axios.post(url, { username: this.username.current.value } ).then(response => {
+    axios.post(url, { username: this.username.current.value, password: this.password.current.value } ).then(_response => {
       // refresh the data
       this.getData();
       // empty the input
       this.username.current.value = "";
-    });
-    axios.post(url, { password: this.password.current.value } ).then(response => {
-      // refresh the data
-      this.getData();
-      // empty the input
-      this.password.current.value = "";
     });
   };
 
