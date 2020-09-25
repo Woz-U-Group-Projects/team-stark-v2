@@ -1,22 +1,41 @@
+
 body {
+  background-color: aquamarine;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;  
 }
 
 code {
+  background-color: aquamarine;
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    monospace;  
 }
 
 h3 {
   color: blue;
+  text-align: center;
 }
 
 h2 {
+  text-align: center;
   font-weight: bold;
   color: red
 }
+
+#header {
+  background-color: lightgray;
+  font-weight: bold;
+  text-align: center;
+  word-spacing: normal;
+}
+
+#inputs {
+  background-color: aquamarine;
+  text-align: center;
+}
+
+
