@@ -3,7 +3,8 @@ package com.example.groupproject.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.CrossOrigin;
+// Sheila comment: CrossOrigin annotation blocked out b/c not used
+// import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+//Sheila comment: RequestParam annotation blocked out b/c not used
+// import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.groupproject.models.User;
 import com.example.groupproject.models.UserRepository;
@@ -43,8 +46,11 @@ public class UserController {
   public User updateProject(@PathVariable Long id, @RequestBody User user) {
     User foundUser = userRepository.findById(id).orElse(null);
     if (foundUser != null) {
-    	foundUser.setUsername(user.getUsername());
+    	foundUser.setEmail(user.getEmail());
     	foundUser.setPassword(user.getPassword());
+    	foundUser.setFirstName(user.getFirstName());
+    	foundUser.setLastName(user.getLastName());
+    
     	userRepository.save(foundUser);
       return foundUser;
     }
