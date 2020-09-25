@@ -18,12 +18,16 @@ public class User {
 	@Id
 	  @GeneratedValue(strategy = GenerationType.AUTO)
 	  private Long id;
-	  
-	  @Column(nullable = false, unique = true)
-	  private String username;
-	  
+	
+	@Column(nullable = false, unique = true)
+	  private String email;
+	
+	@Column(nullable = false, unique = false)
+	  private String firstname;
+	  private String lastname;
 	  private String password;
-
+	  private String username;
+	 
 	/**
 	 * @return the id
 	 */
@@ -58,5 +62,48 @@ public class User {
 	 */
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstname;
+	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstname) {
+		this.firstname = firstname;
+	}
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastname;
+	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastname) {
+		this.lastname = lastname;
+	}
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+		setUsername(email);
 	}
 }
