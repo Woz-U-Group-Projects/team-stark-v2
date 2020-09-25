@@ -3,6 +3,13 @@ package com.example.groupproject.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+// Sheila comment: CrossOrigin annotation blocked out b/c not used
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 //import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
