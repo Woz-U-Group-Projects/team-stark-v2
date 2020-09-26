@@ -61,6 +61,7 @@ class User extends React.Component{
   
 
   render() {
+    const UserHeader = () => <Header title="User" />;
     return (
       
       <div id="inputs">
@@ -92,6 +93,7 @@ class User extends React.Component{
         </ul>
       </div>
     );
+    
   }
   
 }
