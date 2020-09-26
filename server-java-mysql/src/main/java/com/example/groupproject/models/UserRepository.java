@@ -9,6 +9,6 @@ import com.example.groupproject.models.User;
 //All authentication & authorization code artifacts are in this package
 //Start by creating a User class & a UserRepository interface
 public interface UserRepository extends JpaRepository<User, Long> {
-//	User findByUsername(String username);
+	User findById(User id);
 }
 
