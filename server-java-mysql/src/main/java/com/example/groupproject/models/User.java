@@ -20,13 +20,21 @@ public class User {
 	  private Long id;
 	
 	@Column(nullable = false, unique = true)
-	  private String email;
+//	  private String email;
 	
-	@Column(nullable = false, unique = false)
-	  private String firstname;
-	  private String lastname;
+//	@Column(nullable = false, unique = false)
+//	  private String firstname;
+//	  private String lastname;
 	  private String password;
 	  private String username;
+	  
+	// public constructor
+    public User (long id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
+
 	 
 	/**
 	 * @return the id
@@ -67,43 +75,43 @@ public class User {
 	/**
 	 * @return the firstName
 	 */
-	public String getFirstName() {
-		return firstname;
-	}
+//	public String getFirstName() {
+//		return firstname;
+//	}
 
 	/**
 	 * @param firstName the firstName to set
 	 */
-	public void setFirstName(String firstname) {
-		this.firstname = firstname;
-	}
+//	public void setFirstName(String firstname) {
+//		this.firstname = firstname;
+//	}
 
 	/**
 	 * @return the lastName
 	 */
-	public String getLastName() {
-		return lastname;
-	}
+//	public String getLastName() {
+//		return lastname;
+//	}
 
 	/**
 	 * @param lastName the lastName to set
 	 */
-	public void setLastName(String lastname) {
-		this.lastname = lastname;
-	}
+//	public void setLastName(String lastname) {
+//		this.lastname = lastname;
+//	}
 
 	/**
 	 * @return the email
 	 */
-	public String getEmail() {
-		return email;
-	}
+//	public String getEmail() {
+//		return email;
+//	}
 
 	/**
 	 * @param email the email to set
 	 */
-	public void setEmail(String email) {
-		this.email = email;
-		setUsername(email);
-	}
+//	public void setEmail(String email) {
+//		this.email = email;
+//		setUsername(email);
+//	}
 }

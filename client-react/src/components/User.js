@@ -8,38 +8,43 @@ class User extends React.Component {
     super(props);
     this.state = { User: [] };
     this.id = React.createRef();
-    this.email = React.createRef();
-    this.firstname = React.createRef();
-    this.lastname = React.createRef();
+    // this.email = React.createRef();
+    // this.firstname = React.createRef();
+    // this.lastname = React.createRef();
     this.password = React.createRef();
     this.username = React.createRef();
   }
 
+  testAll (){
+    console.log("In testAll");
+    //console.log("email: " + this.email.current.value);
+    console.log("password: " + this.password.current.value);
+    //console.log("first name: " + this.firstname.current.value);
+    //console.log("last name: " + this.lastname.current.value);
+    console.log("username: " + this.username.current.value);
+    //console.log("id: " + this.id.current.value);
+  }
+  testId (){
+    // console.log("In testId");
+    // console.log("id: " + this.id.current.value);
+  }
   componentDidMount() {
+    console.log("In ComponentDidMount");
     this.getData();
-    this.getUserid();
+    //this.getUserid();
   }
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
+
   // get id entered by user to update or delete record associated with id
-  getUserid = ({this.id} ) => {
-=======
-  // get id entered by user to update or delete record associated with id
-  getUserid = () => {
->>>>>>> dev
-    console.log("In getUser");
-    let url = "http://localhost:8080/users/{i}";
-    axios.get(url)
-      .then(response => (this.info = response))
-  }
-<<<<<<< HEAD
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-=======
->>>>>>> dev
+  //getUserid = () => {
+  // getUserid = ({User: this.id.current.value}) => {
+  //   console.log("In getUserid before axios.get");
+  //   testID();
+  //   console.log("this id current value: " + this.id.current.value);
+  //   let url = "http://localhost:8080/users/{i}";
+  //   axios.get(url)
+  //     .then(response => (this.info = response))
+  //    // console.log("this id current value after axios.get: " + this.id.current.value);
+  // }
 
   getData = () => {
     console.log ("In getData");
@@ -49,105 +54,54 @@ class User extends React.Component {
   };
 
   addUser = () => {
-<<<<<<< HEAD
-<<<<<<< Updated upstream
+    console.log ("In addUser before axios.post");
+    this.testAll();
+    
     let url = "http://localhost:8080/users";
-    axios.post(url, { username: this.username.current.value, password: this.password.current.value } ).then(_response => {
-      // refresh the data
-      this.getData();
-=======
-<<<<<<< Updated upstream
-=======
-    console.log ("In addUser");
-    console.log()
->>>>>>> Stashed changes
-=======
-    console.log ("In addUser");
->>>>>>> dev
-    let url = "http://localhost:8080/users";
-    axios.post(url, { email: this.email.current.value, firstname: this.firstname.current.value, lastname: this.lastname.current.value, password: this.password.current.value }).then(response => {
-    //axios.post(url, { email: this.email.current.value }).then(response => {
+    //axios.post(url, { email: this.email.current.value, firstname: this.firstname.current.value, lastname: this.lastname.current.value, password: this.password.current.value }).then(response => {
+    axios.post(url, { password: this.password.current.value, username: this.username.current.value }).then(response => {
       // refresh the data
        this.getData();
         // empty the input
-        this.email.current.value = "";
-        this.password.current.value = "";
-        this.firstname.current.value = "";
-        this.lastname.current.value = "";
+        this.testAll();
         console.log ("In addUser Input emptied");
       });
   };
 
-  deleteUser = () => {
-    console.log ("In DeleteUser");
-    let url = "http://localhost:8080/users/{id}";
-//    let url = "http://localhost:8080/users";
-    axios.delete(url, { id: this.id.current.value } ).then(_response => {
-      // refresh the data
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      this.getData();
-=======
-      this.getUserid(this.id.current.value);
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-=======
-      this.getUserid();
->>>>>>> dev
-      // empty the input
-      console.log ("In DeleteUser Empty the Input");
-      this.id.current.value = "";
-    });
-  };
+  //  deleteUser = () => {
+  //    console.log ("In DeleteUser before axios.delete");
+  //   this.testId();
+    
+  //  let url = "http://localhost:8080/users/{id}";
+  //  axios.delete(url, { id: this.id.current.value } ).then(_response => {
+  //   //   // refresh the data
+  //   this.getUserid(this.id.current.value);
+  //   // empty the input
+  //   console.log ("In DeleteUser Empty the Input");
+  //   this.id.current.value = "";
+  //    });
+  //  };
 
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-// removeUser =() => {
-//   let url = "http://localhost:8080/users";
-//     axios.delete(url, { username: this.username.current.value } , { password: this.password.current.value }).then(response => {
-//       // refresh the data
-//       this.getData();
-//       // empty the input
-//       this.username.current.value = "";
-//       this.password.current.value = "";
-//     });
-// };
-<<<<<<< Updated upstream
-=======
-=======
-=======
->>>>>>> dev
  // update project for id entered by user
-  updateProject = () => {
-    console.log ("In UpdateProject");
-    let url = "http://localhost:8080/users/{id}";
-    //let url = "http://localhost:8080/users";
-    // axios.put(url, { id: this.id.current.value, email: this.email.current.value, password: this.password.current.value} ).then(_response => {
-    axios.put(url, { email: this.email.current.value, firstname: this.firstname.current.value, lastname: this.lastname.current.value, password: this.password.current.value } ).then(_response => {
-        // refresh the data
-<<<<<<< HEAD
-        this.getUserid(this.id.current.value);
-=======
-        this.getUserid();
->>>>>>> dev
-        // empty the input
-        this.id.current.value = "";
-        this.email.current.value = "";
-        this.firstname.current.value = "";
-        this.lastname.current.value = "";
-        this.password.current.value = "";
-<<<<<<< HEAD
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-=======
->>>>>>> dev
+  // updateProject = () => {
+  //   console.log ("In UpdateProject before axios.put");
+  //   this.testId();
+    
+  //   let url = "http://localhost:8080/users/{id}";
+    
+  //   axios.put(url, { email: this.email.current.value, firstname: this.firstname.current.value, lastname: this.lastname.current.value, password: this.password.current.value } ).then(_response => {
+  //       // refresh the data
+  //       this.getUserid(this.id.current.value);
+  //       // empty the input
+  //       this.id.current.value = "";
+  //       this.email.current.value = "";
+  //       this.firstname.current.value = "";
+  //       this.lastname.current.value = "";
+  //       this.password.current.value = "";
   
-        console.log ("In updateProject Input emptied");
-    });
-  };
+  //       console.log ("In updateProject Input emptied");
+  //   });
+  // };
 
   render() {
     return (
@@ -155,67 +109,35 @@ class User extends React.Component {
         <h2>Bill Payment and Budget Tool</h2>
 
         <h3>Create User Account</h3>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-        <label> Email Address:
-        <input className="form-control" ref={this.username} type="text" />
-        </label>
-        <br></br>
-        <label> Password:
-        <input className="form-control" ref={this.password} type="password" />
-        </label>
-        <br></br>
-        <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>
-        <ul>
-          {/* {this.state.User.map(p => (
-            <li key={p.userid}>  
-            THIS IS "COMPLETE" Task DATABASE FIELD-Sheila note
-              {p.username} , { p.password ? "complete" : "not complete" } 
-              <button type="button" className="btn btn-success">Complete</button>
-              <button type="button" className="btn btn-danger"onClick={this.removeUser}>Delete</button>
-            </li>
-          ))} */}
-        </ul>
-<<<<<<< Updated upstream
-=======
-=======
-=======
->>>>>>> dev
+
         <div>
           <label> Email Address:
-          <input className="form-control" ref={this.email} type="text" />
+          <input className="form-control" ref={this.username} type="text" />
           </label>
           <label> Password:
           <input className="form-control" ref={this.password} type="password" />
           </label> 
-          <br></br>
+          {/* <br></br>
           <label> First Name:
           <input className="form-control" ref={this.firstname} type="text" />
            </label>
           <label> Last Name:
           <input className="form-control" ref={this.lastname} type="text" />
           </label>
-          <br></br>
+          <br></br> */}
           <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>
         </div>
         
-        <h3>Delete User Account</h3>
+        {/* <h3>Delete User Account</h3>
         <div>
             <label> Account Number:
               <input className="form-control" ref={this.id} type="number" />  
             </label>
-            <br></br>
-<<<<<<< HEAD
-            <button type="button" className="btn btn-success" onClick={this.deleteUser()}>Delete</button>
-=======
-            <button type="button" className="btn btn-success" onClick={this.deleteUser}>Delete</button>
->>>>>>> dev
-        </div>
+            <br></br> */}
+            {/* <button type="button" className="btn btn-success" onClick={this.deleteUser()}>Delete</button> */}
+        {/* </div> */}
 
-        <h3>Update User Account</h3>
+        {/* <h3>Update User Account</h3>
         <div>
           <label> Account Number: 
             <input className="form-control" ref={this.id} type="number" />
@@ -232,12 +154,7 @@ class User extends React.Component {
           </label> 
           <br></br>
           <button type="button" className="btn btn-primary" onClick={this.updateProject}>Update</button>
-        </div>
-<<<<<<< HEAD
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-=======
->>>>>>> dev
+        </div> */}
       </div>
     );
   }
