@@ -21,6 +21,7 @@ class User extends React.Component{
     this.email = React.createRef();
     this.password = React.createRef();
     this.lastname = React.createRef();
+    this.firstname = React.createRef();
     
   }
   
@@ -42,13 +43,14 @@ class User extends React.Component{
 
   addUser = () => {
     let url = "http://localhost:8080/users";
-    axios.post(url, {email: this.email.current.value, password: this.password.current.value, lastname: this.lastname.current.value } ).then(_response => {
+    axios.post(url, {email: this.email.current.value, password: this.password.current.value, lastname: this.lastname.current.value, firstname: this.firstname.current.value } ).then(_response => {
       // refresh the data
       this.getData();
       // empty the input
       // this.username.current.value = "";
       this.email.current.value = "";
       this.password.current.value = "";
+      this.firstname.current.value = "";
       this.lastname.current.value = "";
     });
   };
@@ -84,8 +86,12 @@ class User extends React.Component{
         <input className="form-control" ref={this.password} type="password" />
         </label>
         <br></br>
-        <label> Last Name
+        <label> First Name
         <input className="form-control" ref={this.lastname} type="text" />
+        </label>
+        <br></br>
+        <label> Last Name
+        <input className="form-control" ref={this.firstname} type="text" />
         </label>
         <br></br>
         <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>

@@ -26,6 +26,8 @@ public class User {
 	  
 	  private String password;
 	  
+	  private String firstname;
+	  
 	  private String lastname;
 
 	/**
@@ -78,5 +80,13 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getFirstname() {
+		return this.firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 }

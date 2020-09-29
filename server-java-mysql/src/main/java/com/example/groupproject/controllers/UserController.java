@@ -46,6 +46,7 @@ public class UserController {
 //    	foundUser.setUsername(user.getUsername());
     	foundUser.setEmail(user.getEmail());
     	foundUser.setPassword(user.getPassword());
+    	foundUser.setLastname(user.getFirstname());
     	foundUser.setLastname(user.getLastname());
     	userRepository.save(foundUser);
       return foundUser;
