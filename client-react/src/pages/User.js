@@ -74,7 +74,8 @@ class User extends React.Component{
     }else{
       console.log("lastname is NULL");
     }   
-  }
+  };
+  
   render() {
     return (
       <div id="inputs">

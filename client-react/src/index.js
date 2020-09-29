@@ -5,6 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import Home from './pages/Home';
 import User from './pages/User';
 import Login from './pages/Login';
+import Biller from './pages/Biller';
 
 const Index = ({ pathname }) => {
     switch (pathname) {
@@ -12,6 +13,8 @@ const Index = ({ pathname }) => {
         return <User />;
       case '/Login':
         return <Login />;
+      case '/Biller':
+        return <Biller />;
       default:
         return <Home />;
     }
