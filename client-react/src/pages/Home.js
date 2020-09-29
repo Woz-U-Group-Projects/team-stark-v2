@@ -1,15 +1,18 @@
 import React from 'react';
 import Header from '../components/Header';
 
-function Home () {
-    return(
-        <div className="Home">
-            <Header title="Bill Payment and Budget Tool" />; 
-            <img src="payment.jpg"></img>; 
-        </div>
-    );    
-} 
 
+// const Home = () => (
+    
+//         <div className="Home">
+//             <h4>Home</h4> 
+//             <img src="payment.jpg"></img>; 
+//         </div>
+//     );    
+
+
+const Home = () => <Header title="Home" />;
+{/* <img src="payment.jpg"></img>;  */}
     
 
 

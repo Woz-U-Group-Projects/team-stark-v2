@@ -43,8 +43,10 @@ public class UserController {
   public User updateProject(@PathVariable Long id, @RequestBody User user) {
     User foundUser = userRepository.findById(id).orElse(null);
     if (foundUser != null) {
-    	foundUser.setUsername(user.getUsername());
+//    	foundUser.setUsername(user.getUsername());
+    	foundUser.setEmail(user.getEmail());
     	foundUser.setPassword(user.getPassword());
+    	foundUser.setLastname(user.getLastname());
     	userRepository.save(foundUser);
       return foundUser;
     }
