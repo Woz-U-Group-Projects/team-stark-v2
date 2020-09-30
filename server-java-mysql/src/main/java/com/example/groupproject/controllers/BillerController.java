@@ -18,7 +18,7 @@ import com.example.groupproject.models.Biller;
 import com.example.groupproject.models.BillerRepository;
 
 @RestController
-@RequestMapping("/biller")
+@RequestMapping("/billers")
 public class BillerController {
   @Autowired
   private BillerRepository billerRepository;
