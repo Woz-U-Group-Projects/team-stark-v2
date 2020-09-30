@@ -18,16 +18,18 @@ public class User {
 	@Id
 	  @GeneratedValue(strategy = GenerationType.AUTO)
 	  private Long id;
-	
-	@Column(nullable = false, unique = true)
+	  
+	  @Column(nullable = false, unique = true)
+//	  private String username;
+	  
 	  private String email;
-	
-	@Column(nullable = false, unique = false)
-	  private String firstname;
-	  private String lastname;
+	  
 	  private String password;
-	  private String username;
-	 
+	  
+	  private String firstname;
+	  
+	  private String lastname;
+
 	/**
 	 * @return the id
 	 */
@@ -53,58 +55,38 @@ public class User {
 	/**
 	 * @return the username
 	 */
-	public String getUsername() {
-		return this.username;
-	}
+//	public String getUsername() {
+//		return this.username;
+//	}
 
 	/**
 	 * @param username the username to set
 	 */
-	public void setUsername(String username) {
-		this.username = username;
-		this.setEmail(username);
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
+
+	public String getLastname() {
+		return this.lastname;
 	}
 
-	/**
-	 * @return the firstName
-	 */
-	public String getFirstName() {
-		return firstname;
-	}
-
-	/**
-	 * @param firstName the firstName to set
-	 */
-	public void setFirstName(String firstname) {
-		this.firstname = firstname;
-	}
-
-	/**
-	 * @return the lastName
-	 */
-	public String getLastName() {
-		return lastname;
-	}
-
-	/**
-	 * @param lastName the lastName to set
-	 */
-	public void setLastName(String lastname) {
+	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
 
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
 		this.email = email;
-		setUsername(email);
+	}
+
+	public String getFirstname() {
+		return this.firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 }
