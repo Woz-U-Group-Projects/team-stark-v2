@@ -20,11 +20,13 @@ public class User {
 	  private Long id;
 	  
 	  @Column(nullable = false, unique = true)
-	  private String username;
+//	  private String username;
+	  
+	  private String email;
 	  
 	  private String password;
 	  
-	  private String email;
+	  private String firstname;
 	  
 	  private String lastname;
 
@@ -53,43 +55,38 @@ public class User {
 	/**
 	 * @return the username
 	 */
-	public String getUsername() {
-		return this.username;
-	}
+//	public String getUsername() {
+//		return this.username;
+//	}
 
 	/**
 	 * @param username the username to set
 	 */
-	public void setUsername(String username) {
-		this.username = username;
-		this.setEmail(username);
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
+
+	public String getLastname() {
+		return this.lastname;
 	}
 
-	/**
-	 * @return the email
-	 */
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	/**
-	 * @return the lastName
-	 */
-	public String getLastName() {
-		return lastname;
+	public String getFirstname() {
+		return this.firstname;
 	}
 
-	/**
-	 * @param lastName the lastName to set
-	 */
-	public void setLastName(String lastname) {
-		this.lastname = lastname;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 }

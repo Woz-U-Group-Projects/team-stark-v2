@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import axios from "axios";
 import '../index.css';
 import '../task.min.css';
@@ -43,7 +43,8 @@ class User extends React.Component{
       this.testAll();
       this.getData();
       // empty the input
-      this.username.current.value = "";
+      // this.username.current.value = "";
+      this.email.current.value = "";
       this.password.current.value = "";
       this.lastname.current.value = "";
     });
@@ -77,13 +78,19 @@ class User extends React.Component{
   };
   
   render() {
+
     return (
       <div id="inputs">
+        <h4>Register Account Here</h4>
         <h2>Bill Payment and Budget Tool</h2>
         <h3>Create User Account</h3>
         <label> Email Address:
-        <input className="form-control" ref={this.username} type="text" />
+        <input className="form-control" ref={this.email} type="text" />
         </label>
+        {/* <br></br>
+        <label> Username:
+        <input className="form-control" ref={this.username} type="text" />
+        </label> */}
         <br></br>
         <label> Password:
         <input className="form-control" ref={this.password} type="password" />
@@ -105,12 +112,13 @@ class User extends React.Component{
             {/* THIS IS "COMPLETE" Task DATABASE FIELD-Sheila note */}
                 {/* {p.username}, {p.password}, {p.lastname} : { p.complete ? "complete" : "not complete" }
               <button type="button" className="btn btn-success">Complete</button>
-              <button type="button" className="btn btn-danger"onClick={this.removeUser}>Delete</button>
-            </li>
+            //   <button type="button" className="btn btn-danger"onClick={this.removeUser}>Delete</button>
+            // </li>
           ))}
         </ul> */}
       </div>
     );
+    
   }
 }
 export default User;
