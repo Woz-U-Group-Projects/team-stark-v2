@@ -7,17 +7,11 @@ import Header from '../components/Header';
 
 
 
-// const Header = () => (
-//   <div>
-//     <h2>Register Account Here</h2>
-//   </div>
-// );
 
 class User extends React.Component{
   constructor(props) {
     super(props);
     this.state = { User: [] };
-    // this.username = React.createRef();
     this.email = React.createRef();
     this.password = React.createRef();
     this.lastname = React.createRef();
@@ -44,10 +38,8 @@ class User extends React.Component{
   addUser = () => {
     let url = "http://localhost:8080/users";
     axios.post(url, {email: this.email.current.value, password: this.password.current.value, lastname: this.lastname.current.value, firstname: this.firstname.current.value } ).then(_response => {
-      // refresh the data
+ 
       this.getData();
-      // empty the input
-      // this.username.current.value = "";
       this.email.current.value = "";
       this.password.current.value = "";
       this.firstname.current.value = "";
@@ -70,6 +62,8 @@ class User extends React.Component{
   render() {
 
     return (
+      <div>
+        <Header />
       <div id="inputs">
         <h4>Register Account Here</h4>
         <h2>Bill Payment and Budget Tool</h2>
@@ -77,10 +71,6 @@ class User extends React.Component{
         <label> Email Address:
         <input className="form-control" ref={this.email} type="text" />
         </label>
-        {/* <br></br>
-        <label> Username:
-        <input className="form-control" ref={this.username} type="text" />
-        </label> */}
         <br></br>
         <label> Password:
         <input className="form-control" ref={this.password} type="password" />
@@ -95,21 +85,15 @@ class User extends React.Component{
         </label>
         <br></br>
         <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>
-        <br></br>
-        {/* <label> Email Address to Remove:
-        <input className="form-control" ref={this.username} type="text" />
-        <label/> */}
-        {/* <button type="button" className="btn btn-danger" onClick={this.removeUser}>Delete Account</button> */}
+    
         <ul>
           {this.state.User.map(p => (
-            <li key={p.userid}>  
-            {/* THIS IS "COMPLETE" Task DATABASE FIELD-Sheila note */}
-              {/* {p.username} , { p.password ? "complete" : "not complete" }  */}
-              <button type="button" className="btn btn-success">Complete</button>
+            <li key={p.userid}> 
             //   <button type="button" className="btn btn-danger"onClick={this.removeUser}>Delete</button>
             // </li>
           ))}
         </ul>
+      </div>
       </div>
     );
     
@@ -119,6 +103,4 @@ class User extends React.Component{
 
 
 export default User;
-
-
 
