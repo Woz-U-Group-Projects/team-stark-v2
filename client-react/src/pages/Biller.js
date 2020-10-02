@@ -8,7 +8,7 @@ class Biller extends React.Component{
   constructor(props) {
     super(props);
     this.state = { Biller: [] };
-    this.billerId = React.createRef();
+    this.id = React.createRef();
     this.accountnumber = React.createRef();
     this.amount = React.createRef();
     this.billername = React.createRef(); 
@@ -16,9 +16,9 @@ class Biller extends React.Component{
     this.paymentType = React.createRef();
   }
   
-  // componentDidMount() {
-  //   this.getData();
-  // }
+  componentDidMount() {
+    this.getData();
+  };
 
   getData = () => {
     console.log("In getData");
@@ -29,24 +29,37 @@ class Biller extends React.Component{
     // Express uses port 3001 (react uses 3000)
     //let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ Biller: response.data }));
-   this.testAll();
+   //this.testAll();
   };
 
   addBiller = () => {
     console.log("In addBiller");
-    this.testAll();
+   // this.testAll();
     let url = "http://localhost:8080/billers";
     axios.post(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, billername: this.billername.current.value, date: this.date.current.value, paymentType: this.paymentType.current.value } ).then(_response => {
       // refresh the data
       console.log("After axios function call");
-      this.testAll();
+   // this.testAll();
       this.getData();
       // empty the input
       this.emptyInput();
     });
   };
 
-  emptyInput(){
+//   getBillerById = () => {
+//     console.log("In getBillerById");
+//     console.log("ID before axios.get: " + this.id.current.value);
+//     let url = "http://localhost:8080/billers/" + this.id.current.value;
+//     axios.get(url, { id: this.id.current.value } ).then(_response => {
+//     // refresh the data
+//     console.log("ID after axios.get: " + this.id.current.value);
+//     this.getData();
+//     // empty the urlinput
+//     this.id.current.value = "";
+//   });
+// };
+
+  emptyInput() {
       this.accountnumber.current.value = "";
       this.amount.current.value = "";
       this.billername.current.value = "";
@@ -85,31 +98,77 @@ class Biller extends React.Component{
 
   render() {
     return (
-      <div id="inputs">
-        <h2>Bill Payment and Budget Tool</h2>
-        <h3>Add Biller</h3>
-        <label> Account Number:
-        <input className="form-control" ref={this.accountnumber} type="number" />
-        </label>
-        <br></br>
-        <label> Biller Name:
-        <input className="form-control" ref={this.billername} type="text" />
-        </label>
-        <br></br>
-        <label> Bill Amount:
-          <input className="form-control" ref={this.amount} type="number" />
-        </label>
-        <br></br>
-        <label> Bill Date :
-          <input className="form-control" ref={this.date} type="date" />
-        </label>
-        <br></br>
-        <label> Payment Type :
-          <input className="form-control" ref={this.paymentType} type="text" />
-        </label>
-        <br></br>
-        <button type="button" className="btn btn-primary" onClick={this.addBiller}>Create</button>
-        <br></br>
+      <div><Header />
+        <div id="inputs">
+          <div>
+            <h2>Bill Payment and Budget Tool</h2>
+            <h3>Add Bill</h3>
+            <label> Account Number:
+            <input className="form-control" ref={this.accountnumber} type="number" />
+            </label>
+            <br></br>
+            <label> Biller Name:
+            <input className="form-control" ref={this.billername} type="text" />
+            </label>
+            <br></br>
+            <label> Bill Amount:
+              <input className="form-control" ref={this.amount} type="number" />
+            </label>
+            <br></br>
+            <label> Bill Date :
+              <input className="form-control" ref={this.date} type="date" />
+            </label>
+            <br></br>
+            <label> Payment Type :
+              <input className="form-control" ref={this.paymentType} type="text" />
+            </label>
+            <br></br>
+            <button type="button" className="btn btn-primary" onClick={this.addBiller}>Add Biller</button>
+            <br></br>
+          </div>
+
+          {/* <div>
+            <h3>Get Biller </h3>
+            <label> ID:
+            <input className="form-control" ref={this.id} type="number" />
+            </label>
+            <br></br>
+            <br></br>
+            <button type="button" className="btn btn-primary" onClick={this.getBillerById}>Get Biller</button>
+            <br></br>
+          </div> */}
+          
+          {/* <div>
+            <h3>Update Biller </h3>
+            <label> ID:
+            <input className="form-control" ref={this.id} type="number" />
+            </label>
+            <br></br>
+            <label> Account Number:
+            <input className="form-control" ref={this.accountnumber} type="number" />
+            </label>
+            <br></br>
+            <label> Biller Name:
+            <input className="form-control" ref={this.billername} type="text" />
+            </label>
+            <br></br>
+            <label> Bill Amount:
+              <input className="form-control" ref={this.amount} type="number" />
+            </label>
+            <br></br>
+            <label> Bill Date :
+              <input className="form-control" ref={this.date} type="date" />
+            </label>
+            <br></br>
+            <label> Payment Type :
+              <input className="form-control" ref={this.paymentType} type="text" />
+            </label>
+            <br></br>
+            <br></br>
+            <button type="button" className="btn btn-primary" onClick={this.updateProject}>Update Biller</button>
+            <br></br>
+          </div> */}
+        </div>
       </div>
     );
   }

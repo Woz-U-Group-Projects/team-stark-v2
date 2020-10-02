@@ -26,7 +26,6 @@ public class User {
 	  private String firstname;
 	  private String lastname;
 	  private String password;
-	  private String username;
 	 
 	/**
 	 * @return the id
@@ -48,21 +47,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	/**
-	 * @return the username
-	 */
-	public String getUsername() {
-		return this.username;
-	}
-
-	/**
-	 * @param username the username to set
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-		this.setEmail(username);
 	}
 
 	/**
@@ -105,6 +89,5 @@ public class User {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
-		setUsername(email);
 	}
 }

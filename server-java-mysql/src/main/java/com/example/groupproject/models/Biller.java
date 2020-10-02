@@ -22,7 +22,7 @@ public class Biller {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long billerId;
+	private Long id;
 	
 	private Long accountnumber;
 	
@@ -103,5 +103,19 @@ public class Biller {
 	 */
 	public void setPaymentType(String paymentType) {
 		this.paymentType = paymentType;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}	
 }

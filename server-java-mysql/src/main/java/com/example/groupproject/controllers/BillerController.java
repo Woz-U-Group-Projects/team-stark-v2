@@ -39,12 +39,12 @@ public class BillerController {
 	    return billerRepository.save(biller);
   }
   
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/delete/{id}")
   public void deleteBiller(@PathVariable Long id) {
     billerRepository.deleteById(id);
   }
 
-  @PutMapping("/{id}")
+  @PutMapping("/put/{id}")
   public Biller updateProject(@PathVariable Long id, @RequestBody Biller biller) {
     Biller foundBiller = billerRepository.findById(id).orElse(null);
     if (foundBiller != null) {
