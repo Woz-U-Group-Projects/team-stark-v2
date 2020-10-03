@@ -16,9 +16,6 @@ class Biller extends React.Component{
     this.paymentType = React.createRef();
   }
   
-  // componentDidMount() {
-  //   this.getData();
-  // }
 
   getData = () => {
     console.log("In getData");
@@ -29,17 +26,17 @@ class Biller extends React.Component{
     // Express uses port 3001 (react uses 3000)
     //let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ Biller: response.data }));
-   this.testAll();
+  //  this.testAll();
   };
 
   addBiller = () => {
     console.log("In addBiller");
-    this.testAll();
+    // this.testAll();
     let url = "http://localhost:8080/billers";
     axios.post(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, billername: this.billername.current.value, date: this.date.current.value, paymentType: this.paymentType.current.value } ).then(_response => {
       // refresh the data
       console.log("After axios function call");
-      this.testAll();
+      // this.testAll();
       this.getData();
       // empty the input
       this.emptyInput();
@@ -54,37 +51,39 @@ class Biller extends React.Component{
       this.paymentType.current.value = "";
   };
   
-  testAll(){
-    console.log("In testAll");
-    if(this.accountnumber.current.value !== ""){
-      console.log("accountnumber: " + this.accountnumber.current.value);}
-    else{
-      console.log("accountnumber is NULL");
-    }
-    if(this.amount.current.value !== ""){
-        console.log("amount: " + this.amount.current.value);}
-    else{
-        console.log("amount is NULL");
-    }
-    if(this.billername.current.value !== ""){
-      console.log("billername: " + this.billername.current.value);}
-    else{
-      console.log("billername is null");
-    }   
-    if(this.date.current.value !== ""){
-        console.log("date:" + this.date.current.value);}
-    else{
-      console.log("date is null");
-    } 
-    if(this.paymentType.current.value !== ""){
-      console.log("paymentType:" + this.paymentType.current.value);}
-    else{
-      console.log("paymentType is null");
-    }
-};
+//   testAll(){
+//     console.log("In testAll");
+//     if(this.accountnumber.current.value !== ""){
+//       console.log("accountnumber: " + this.accountnumber.current.value);}
+//     else{
+//       console.log("accountnumber is NULL");
+//     }
+//     if(this.amount.current.value !== ""){
+//         console.log("amount: " + this.amount.current.value);}
+//     else{
+//         console.log("amount is NULL");
+//     }
+//     if(this.billername.current.value !== ""){
+//       console.log("billername: " + this.billername.current.value);}
+//     else{
+//       console.log("billername is null");
+//     }   
+//     if(this.date.current.value !== ""){
+//         console.log("date:" + this.date.current.value);}
+//     else{
+//       console.log("date is null");
+//     } 
+//     if(this.paymentType.current.value !== ""){
+//       console.log("paymentType:" + this.paymentType.current.value);}
+//     else{
+//       console.log("paymentType is null");
+//     }
+// };
 
   render() {
     return (
+      <div>
+        
       <div id="inputs">
         <h2>Bill Payment and Budget Tool</h2>
         <h3>Add Biller</h3>
@@ -111,6 +110,7 @@ class Biller extends React.Component{
         <button type="button" className="btn btn-primary" onClick={this.addBiller}>Create</button>
         <br></br>
       </div>
+    </div>
     );
   }
 }
