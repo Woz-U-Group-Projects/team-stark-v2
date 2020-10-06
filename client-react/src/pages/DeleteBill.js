@@ -7,13 +7,15 @@ import Header from '../components/Header';
 class DeleteBill extends React.Component{
     constructor(props) {
       super(props);
-      this.state = { Biller: [] };
+      this.state = { DeleteBiller: [] };
       this.id = React.createRef();
       this.accountnumber = React.createRef();
       this.amount = React.createRef();
       this.billername = React.createRef(); 
       this.date = React.createRef();
+      this.paymentAmount = React.createRef();
       this.paymentType = React.createRef();
+      this.scheduled = React.createRef();
     }
 
     componentDidMount() {
@@ -21,9 +23,9 @@ class DeleteBill extends React.Component{
     };
 
     getData = () => {
-        console.log("In getData");
+        console.log("In getData in delete bill");
         // Java Spring Boot uses port 8080
-        let url = "http://localhost:8080/billers/delete/{this.id}";
+        let url = "http://localhost:8080/billers/{this.id}";
         // C# dotnetcore uses port 5000
         //let url = "http://localhost:5000/projects";
         // Express uses port 3001 (react uses 3000)
@@ -34,31 +36,33 @@ class DeleteBill extends React.Component{
     };
 
     deleteBiller = () => {
-        console.log("In deleteBiller");
+        console.log("In deleteBill");
         console.log("ID before axios.delete: " + this.id.current.value);
-        //this.emptyInput();
-        let url = "http://localhost:8080/billers/delete/{this.id}";
+        let url = "http://localhost:8080/billers/{this.id}";
        axios.delete(url, { id: this.id.current.value } ).then(_response => {
-       // axios.put(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, billername: this.billername.current.value, date: this.date.current.value, paymentType: this.paymentType.current.value } ).then(_response => {
+       // axios.put(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, billername: this.billername.current.value, date: this.date.current.value, paymentAmount: this.paymentAmount.current.value, paymentType: this.paymentType.current.value, Scheduled: this.scheduled.current.value } ).then(_response => {
         // refresh the data
-        console.log("ID after axios.delete: " + this.id.current.value);
+        console.log("in delete bill ID after axios.delete: " + this.id.current.value);
         this.test();
         this.getData();
         // empty the input
-        this.id.current.value = "";
+        this.emptyInput();
         });
     };
 
     emptyInput(){
-        this.accountnumber.current.value = "999999999";
-        this.amount.current.value = "-99";
-        this.billername.current.value = "DELETE";
-        this.date.current.value = "3030-12-30";
-        this.paymentType.current.value = "DELETE";
+        this.id.current.value = "";
+        this.accountnumber.current.value = "";
+        this.amount.current.value = "";
+        this.billername.current.value = "";
+        this.date.current.value = "";
+        this.paymentType.current.value = "";
+        this.paymentAmount.current.value = "";
+        this.scheduled.current.value = "";
     };
   
     test(){
-        console.log("In test");
+        console.log("In test in delete bill");
         if(this.id.current.value !== ""){
             console.log("id: " + this.id.current.value);
         }else{

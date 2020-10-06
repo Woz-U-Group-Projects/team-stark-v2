@@ -14,9 +14,15 @@ const Header = ({ title }) => (
         <br></br>
         <a href="/Biller"> Add Bill </a>
         <br></br>
+        <a href="/UpdateBill"> Update Bill</a>
+        <br></br>
         <a href="/DeleteBill"> Delete Bill </a>
         <br></br>
-        <a href="/UpdateBill"> Update Bill</a>
+        <a href="/Payment"> Add Payment Type</a>
+        <br></br>
+        <a href="/UpdatePayment"> Update Payment Type</a>
+        <br></br>
+        <a href="/DeletePayment"> Delete Payment Type</a>
         <hr></hr>
         <h1>{title}</h1>
     </div>

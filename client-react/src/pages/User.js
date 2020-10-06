@@ -17,13 +17,13 @@ class User extends React.Component{
     this.firstname = React.createRef();
   }
   
-  // componentDidMount() {
-  //   console.log("In componentDidMount");
-  //   this.getData();
-  // };
+  componentDidMount() {
+    console.log("In componentDidMount");
+    this.getData();
+  };
 
   getData = () => {
-    console.log("In getData");
+    console.log("In getData in user");
     // Java Spring Boot uses port 8080
     let url = "http://localhost:8080/users";
     // C# dotnetcore uses port 5000
@@ -31,16 +31,15 @@ class User extends React.Component{
     // Express uses port 3001 (react uses 3000)
     //let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ User: response.data }));
-   //this.testAll();
   };
 
   addUser = () => {
-    console.log("In addUser before axios call");
+    console.log("In addUser before axios.post call");
     let url = "http://localhost:8080/users";
     this.testAll();
     axios.post(url, { email: this.email.current.value, password: this.password.current.value, lastname: this.lastname.current.value, firstname: this.firstname.current.value }).then(_response => {
       // refresh the data
-      console.log("In addUser after axios call");
+      console.log("In addUser after axios.post call");
       this.getData();
       // empty the input
       this.email.current.value = "";
@@ -49,17 +48,9 @@ class User extends React.Component{
       this.password.current.value = "";
     });
   };
-  // removeUser =() => {
-  //   let url = "http://localhost:8080/edit";
-  //     axios.delete(url, { email: 'this.email.current.value', password: 'this.password.current.value' }).then(_response => {
-        
-  //       this.getData();
-        
-  //       this.email.current.value = "";
-  //       this.password.current.value = "";
-  //     });
-  // };
+  
   testAll(){
+    console.log("In user test all")
     if(this.email.current.value !== ""){
         console.log("email:" + this.email.current.value);}
     else{

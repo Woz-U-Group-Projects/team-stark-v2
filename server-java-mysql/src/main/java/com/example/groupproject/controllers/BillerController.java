@@ -39,12 +39,12 @@ public class BillerController {
 	    return billerRepository.save(biller);
   }
   
-  @DeleteMapping("/delete/{id}")
+  @DeleteMapping("/{id}")
   public void deleteBiller(@PathVariable Long id) {
     billerRepository.deleteById(id);
   }
 
-  @PutMapping("/put/{id}")
+  @PutMapping("/{id}")
   public Biller updateProject(@PathVariable Long id, @RequestBody Biller biller) {
     Biller foundBiller = billerRepository.findById(id).orElse(null);
     if (foundBiller != null) {
@@ -53,6 +53,7 @@ public class BillerController {
     	foundBiller.setAmount(biller.getAmount());
     	foundBiller.setDate(biller.getDate());
     	foundBiller.setPaymentType(biller.getPaymentType());
+    	foundBiller.setPaymentAmount(biller.getPaymentAmount());
     	billerRepository.save(foundBiller);
       return foundBiller;
     }

@@ -7,7 +7,7 @@ import Header from '../components/Header';
 class UpdateUser extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { User: [] };
+    this.state = { UpdateUser: [] };
     // this.username = React.createRef();
     this.id = React.createRef();
     this.email = React.createRef();
@@ -16,30 +16,29 @@ class UpdateUser extends React.Component{
     this.firstname = React.createRef();
   }
   
-  // componentDidMount() {
-  //   console.log("In componentDidMount");
-  //   this.getData();
-  // };
+  componentDidMount() {
+    console.log("In componentDidMount");
+    this.getData();
+  };
 
   getData = () => {
-    console.log("In getData");
+    console.log("In getData in update user");
     // Java Spring Boot uses port 8080
-    let url = "http://localhost:8080/users/updateuser/{this.id}";
+    let url = "http://localhost:8080/users/{this.id}";
     // C# dotnetcore uses port 5000
     //let url = "http://localhost:5000/projects";
     // Express uses port 3001 (react uses 3000)
     //let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ UpdateUser: response.data }));
-   //this.testAll();
   };
 
   updateProject = () => {
-    console.log ("In updateProject");
-    let url = "http://localhost:8080/users/updateuser/{this.id}";
+    console.log ("In updateProject in update user");
+    let url = "http://localhost:8080/users/{this.id}";
     console.log("ID before axios.put: " + this.id.current.value);
     axios.put(url, { id: this.id.current.value, email: this.email.current.value, password: this.password.current.value, lastname: this.lastname.current.value, firstname: this.firstname.current.value }).then(_response => {
       // refresh data
-      console.log("after axios.put email: " + this.email.current.value);
+      console.log("in update user after axios.put email: " + this.email.current.value);
       console.log("password: " + this.password.current.value);
       console.log("lastname: " + this.lastname.current.value);
       console.log("firstname: " + this.firstname.current.value);
@@ -60,7 +59,7 @@ class UpdateUser extends React.Component{
             <h2>Bill Payment and Budget Tool</h2>
             <h3>Update User Account</h3>
             <label> ID:
-              <input className="form-control" ref={this.id} type="text" />
+              <input className="form-control" ref={this.id} type="number" />
             </label>
             <br></br>
             <label> Firstname:

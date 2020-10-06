@@ -35,12 +35,12 @@ public class UserController {
 	    return userRepository.save(user);
   }
   
-  @DeleteMapping("/deleteuser/{id}")
+  @DeleteMapping("/{id}")
   public void deleteUser(@PathVariable Long id) {
     userRepository.deleteById(id);
   }
 
-  @PutMapping("/updateuser/{id}")
+  @PutMapping("/{id}")
   public User updateProject(@PathVariable Long id, @RequestBody User user) {
     User foundUser = userRepository.findById(id).orElse(null);
     if (foundUser != null) {

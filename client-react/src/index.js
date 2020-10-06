@@ -10,23 +10,32 @@ import DeleteBill from './pages/DeleteBill';
 import UpdateBill from './pages/UpdateBill';
 import UpdateUser from './pages/UpdateUser';
 import DeleteUser from './pages/DeleteUser';
+import Payment from './pages/Payment';
+import UpdatePayment from './pages/UpdatePayment';
+import DeletePayment from './pages/DeletePayment';
 
 const Index = ({ pathname }) => {
     switch (pathname) {
-      case '/User':
-        return <User />;
       case '/Login':
         return <Login />;
-      case '/Biller':
-        return <Biller />;
-      case '/DeleteBill':
-        return <DeleteBill />;
-      case '/UpdateBill':
-        return <UpdateBill />;
+      case '/User':
+        return <User />;
       case '/UpdateUser':
         return <UpdateUser />;
       case '/DeleteUser':
         return <DeleteUser />;
+      case '/Biller':
+        return <Biller />;
+      case '/UpdateBill':
+        return <UpdateBill />;
+      case '/DeleteBill':
+        return <DeleteBill />;
+      case '/Payment':
+        return <Payment />;
+      case '/UpdatePayment':
+        return <UpdatePayment />;
+      case '/DeletePayment':
+        return <DeletePayment />;
       default:
         return <Home />;
     }

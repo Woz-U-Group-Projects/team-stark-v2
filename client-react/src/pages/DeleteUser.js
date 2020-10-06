@@ -7,7 +7,7 @@ import Header from '../components/Header';
 class DeleteUser extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { User: [] };
+    this.state = { DeleteUser: [] };
     // this.username = React.createRef();
     this.id = React.createRef();
     this.email = React.createRef();
@@ -22,7 +22,7 @@ class DeleteUser extends React.Component{
   };
 
   getData = () => {
-    console.log("In getData");
+    console.log("In getData in delete user");
     // Java Spring Boot uses port 8080
     let url = "http://localhost:8080/users/deleteuser/{this.id}";
     // C# dotnetcore uses port 5000
@@ -30,16 +30,15 @@ class DeleteUser extends React.Component{
     // Express uses port 3001 (react uses 3000)
     //let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ UpdateUser: response.data }));
-   //this.testAll();
   };
   deleteUser = () => {
-    console.log ("In updateProject");
+    console.log ("In deleteUser");
     let url = "http://localhost:8080/users/deleteuser/{this.id}";
-    console.log("ID before axios.put: " + this.id.current.value);
+    console.log("In delete user ID before axios.delete: " + this.id.current.value);
     axios.delete(url, { id: this.id.current.value } ).then(_response => {
     // axios.delete(url, { id: this.id.current.value, email: this.email.current.value, password: this.password.current.value, lastname: this.lastname.current.value, firstname: this.firstname.current.value }).then(_response => {
     // refresh data
-    console.log("after axios.put email: " + this.email.current.value);
+    console.log("In delete user after axios.delete email: " + this.email.current.value);
     console.log("password: " + this.password.current.value);
     console.log("lastname: " + this.lastname.current.value);
     console.log("firstname: " + this.firstname.current.value);
@@ -60,7 +59,7 @@ class DeleteUser extends React.Component{
             <h2>Bill Payment and Budget Tool</h2>
             <h3>Delete User Account</h3>
             <label> ID:
-              <input className="form-control" ref={this.id} type="text" />
+              <input className="form-control" ref={this.id} type="number" />
             </label>
             <br></br>
             <button type="button" className="btn btn-primary" onClick={this.deleteUser}>Delete User</button>

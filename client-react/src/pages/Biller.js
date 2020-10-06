@@ -13,7 +13,9 @@ class Biller extends React.Component{
     this.amount = React.createRef();
     this.billername = React.createRef(); 
     this.date = React.createRef();
+    this.paymentAmount = React.createRef();
     this.paymentType = React.createRef();
+    this.scheduled = React.createRef();
   }
   
   componentDidMount() {
@@ -21,7 +23,7 @@ class Biller extends React.Component{
   };
 
   getData = () => {
-    console.log("In getData");
+    console.log("In getData in biller");
     // Java Spring Boot uses port 8080
     let url = "http://localhost:8080/billers";
     // C# dotnetcore uses port 5000
@@ -29,14 +31,14 @@ class Biller extends React.Component{
     // Express uses port 3001 (react uses 3000)
     //let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ Biller: response.data }));
-   //this.testAll();
   };
 
   addBiller = () => {
     console.log("In addBiller");
-   // this.testAll();
+   this.testAll();
     let url = "http://localhost:8080/billers";
-    axios.post(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, billername: this.billername.current.value, date: this.date.current.value, paymentType: this.paymentType.current.value } ).then(_response => {
+ 
+    axios.post(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, billername: this.billername.current.value, date: this.date.current.value, paymentAmount: this.paymentAmount.current.value, paymentType: this.paymentType.current.value, Scheduled: this.scheduled.current.value } ).then(_response => {
       // refresh the data
       console.log("After axios function call");
    // this.testAll();
@@ -46,29 +48,18 @@ class Biller extends React.Component{
     });
   };
 
-//   getBillerById = () => {
-//     console.log("In getBillerById");
-//     console.log("ID before axios.get: " + this.id.current.value);
-//     let url = "http://localhost:8080/billers/" + this.id.current.value;
-//     axios.get(url, { id: this.id.current.value } ).then(_response => {
-//     // refresh the data
-//     console.log("ID after axios.get: " + this.id.current.value);
-//     this.getData();
-//     // empty the urlinput
-//     this.id.current.value = "";
-//   });
-// };
-
   emptyInput() {
       this.accountnumber.current.value = "";
       this.amount.current.value = "";
       this.billername.current.value = "";
       this.date.current.value = "";
       this.paymentType.current.value = "";
+      this.paymentAmount.current.value = "";
+      this.scheduled.current.value = "";
   };
   
   testAll(){
-    console.log("In testAll");
+    console.log("In testAll in biller");
     if(this.accountnumber.current.value !== ""){
       console.log("accountnumber: " + this.accountnumber.current.value);}
     else{
@@ -94,6 +85,16 @@ class Biller extends React.Component{
     else{
       console.log("paymentType is null");
     }
+    if(this.paymentAmount.current.value !== ""){
+      console.log("paymentAmount:" + this.paymentAmount.current.value);}
+    else{
+      console.log("paymentType is null");
+    }
+    if(this.paymentType.current.value !== ""){
+      console.log("scheduled:" + this.scheduled.current.value);}
+    else{
+      console.log("scheduled is false by default");
+    }
 };
 
   render() {
@@ -115,59 +116,29 @@ class Biller extends React.Component{
               <input className="form-control" ref={this.amount} type="number" />
             </label>
             <br></br>
-            <label> Bill Date :
+            <label> Payment Date :
               <input className="form-control" ref={this.date} type="date" />
             </label>
             <br></br>
             <label> Payment Type :
               <input className="form-control" ref={this.paymentType} type="text" />
+            </label>
+            <br></br>
+            <label> Payment Amount :
+              <input className="form-control" ref={this.paymentAmount} type="number" />
+            </label>
+            <br></br>
+            <label> Schedule Payment? true / false :
+              <input className="form-control" ref={this.scheduled} type="text" />
             </label>
             <br></br>
             <button type="button" className="btn btn-primary" onClick={this.addBiller}>Add Biller</button>
             <br></br>
+            
           </div>
 
-          {/* <div>
-            <h3>Get Biller </h3>
-            <label> ID:
-            <input className="form-control" ref={this.id} type="number" />
-            </label>
-            <br></br>
-            <br></br>
-            <button type="button" className="btn btn-primary" onClick={this.getBillerById}>Get Biller</button>
-            <br></br>
-          </div> */}
           
-          {/* <div>
-            <h3>Update Biller </h3>
-            <label> ID:
-            <input className="form-control" ref={this.id} type="number" />
-            </label>
-            <br></br>
-            <label> Account Number:
-            <input className="form-control" ref={this.accountnumber} type="number" />
-            </label>
-            <br></br>
-            <label> Biller Name:
-            <input className="form-control" ref={this.billername} type="text" />
-            </label>
-            <br></br>
-            <label> Bill Amount:
-              <input className="form-control" ref={this.amount} type="number" />
-            </label>
-            <br></br>
-            <label> Bill Date :
-              <input className="form-control" ref={this.date} type="date" />
-            </label>
-            <br></br>
-            <label> Payment Type :
-              <input className="form-control" ref={this.paymentType} type="text" />
-            </label>
-            <br></br>
-            <br></br>
-            <button type="button" className="btn btn-primary" onClick={this.updateProject}>Update Biller</button>
-            <br></br>
-          </div> */}
+          
         </div>
       </div>
     );
