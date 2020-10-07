@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import '../index.css';
 import '../task.min.css';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 
 class DeleteUser extends React.Component{
   constructor(props) {
@@ -54,7 +54,7 @@ class DeleteUser extends React.Component{
   render() {
     return (
       <div>
-        <Header />
+        
           <div id="inputs">
             <h2>Bill Payment and Budget Tool</h2>
             <h3>Delete User Account</h3>

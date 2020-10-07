@@ -2,7 +2,7 @@ import React from 'react';
 import axios from "axios";
 import '../index.css';
 import '../task.min.css';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 
 class DeleteBill extends React.Component{
     constructor(props) {
@@ -72,7 +72,7 @@ class DeleteBill extends React.Component{
 
     render() {
         return (
-        <div><Header />
+        <div>
             <div id="inputs">
             <h2>Bill Payment and Budget Tool</h2>
                 <h3> Delete Bill </h3>
