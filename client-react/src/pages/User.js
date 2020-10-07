@@ -43,10 +43,7 @@ class User extends React.Component{
     });  
     
   };
-  // btnClick() {
-  //   window.open("/Login");
-    
-  // }
+ 
   
   render() {
 
