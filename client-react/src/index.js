@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import * as serviceWorker from './serviceWorker';
 import Home from './pages/Home';
 import User from './pages/User';
-import Login from './pages/Login';
+import Login from './Login';
 import Biller from './pages/Biller';
 import DeleteBill from './pages/DeleteBill';
 import UpdateBill from './pages/UpdateBill';
@@ -13,7 +13,18 @@ import DeleteUser from './pages/DeleteUser';
 import Payment from './pages/Payment';
 import UpdatePayment from './pages/UpdatePayment';
 import DeletePayment from './pages/DeletePayment';
-
+// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+// const App = () => (
+//   <Router>
+//     <div>
+//       <Route exact path="/" component={Home} />
+//       <Route path="/Login" component={Login} />
+//       <Route path="/pages/User" component={User} />
+//     </div>
+//   </Router>
+// );
+// ReactDOM.render(<App />, document.getElementById('root'));
+  
 const Index = ({ pathname }) => {
     switch (pathname) {
       case '/Login':

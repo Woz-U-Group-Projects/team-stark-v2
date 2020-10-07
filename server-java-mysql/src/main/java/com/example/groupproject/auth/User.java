@@ -1,4 +1,4 @@
-package com.example.groupproject.models;
+package com.example.groupproject.auth;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +21,7 @@ public class User {
 	
 	@Column(nullable = false, unique = true)
 	  private String email;
+	  private String username;
 	
 	@Column(nullable = false, unique = false)
 	  private String firstname;
@@ -89,5 +90,19 @@ public class User {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

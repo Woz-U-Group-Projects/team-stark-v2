@@ -1,7 +1,6 @@
 package com.example.groupproject.models;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.util.*;
 
 import javax.persistence.Column;

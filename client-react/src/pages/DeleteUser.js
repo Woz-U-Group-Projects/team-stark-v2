@@ -24,7 +24,7 @@ class DeleteUser extends React.Component{
   getData = () => {
     console.log("In getData in delete user");
     // Java Spring Boot uses port 8080
-    let url = "http://localhost:8080/users/deleteuser/{this.id}";
+    let url = "http://localhost:8080/users/{this.id}";
     // C# dotnetcore uses port 5000
     //let url = "http://localhost:5000/projects";
     // Express uses port 3001 (react uses 3000)
@@ -33,7 +33,7 @@ class DeleteUser extends React.Component{
   };
   deleteUser = () => {
     console.log ("In deleteUser");
-    let url = "http://localhost:8080/users/deleteuser/{this.id}";
+    let url = "http://localhost:8080/users/{this.id}";
     console.log("In delete user ID before axios.delete: " + this.id.current.value);
     axios.delete(url, { id: this.id.current.value } ).then(_response => {
     // axios.delete(url, { id: this.id.current.value, email: this.email.current.value, password: this.password.current.value, lastname: this.lastname.current.value, firstname: this.firstname.current.value }).then(_response => {
