@@ -24,7 +24,7 @@ class DeleteUser extends React.Component{
   getData = () => {
     console.log("In getData in delete user");
     // Java Spring Boot uses port 8080
-    let url = "http://localhost:8080/users/deleteuser/{this.id}";
+    let url = "http://localhost:8080/users";
     // C# dotnetcore uses port 5000
     //let url = "http://localhost:5000/projects";
     // Express uses port 3001 (react uses 3000)
@@ -33,9 +33,9 @@ class DeleteUser extends React.Component{
   };
   deleteUser = () => {
     console.log ("In deleteUser");
-    let url = "http://localhost:8080/users/deleteuser/{this.id}";
-    console.log("In delete user ID before axios.delete: " + this.id.current.value);
-    axios.delete(url, { id: this.id.current.value } ).then(_response => {
+    let url = "http://localhost:8080/users/email";
+    console.log("In delete user email before axios.delete: " + this.email.current.value);
+    axios.delete(url, { email: this.email.current.value } ).then(_response => {
     // axios.delete(url, { id: this.id.current.value, email: this.email.current.value, password: this.password.current.value, lastname: this.lastname.current.value, firstname: this.firstname.current.value }).then(_response => {
     // refresh data
     console.log("In delete user after axios.delete email: " + this.email.current.value);
@@ -58,11 +58,11 @@ class DeleteUser extends React.Component{
           <div id="inputs">
             <h2>Bill Payment and Budget Tool</h2>
             <h3>Delete User Account</h3>
-            <label> ID:
-              <input className="form-control" ref={this.id} type="number" />
+            <label> Email:
+              <input className="form-control" ref={this.email} type="text" />
             </label>
             <br></br>
-            <button type="button" className="btn btn-primary" onClick={this.deleteUser}>Delete User</button>
+            <button type="button" className="btn btn-danger" onClick={this.deleteUser}>Delete User</button>
             <br></br>
           </div>
       </div>

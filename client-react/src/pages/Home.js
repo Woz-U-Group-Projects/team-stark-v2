@@ -24,7 +24,10 @@ import '../task.min.css';
 const Home = () => (
     <div>
       <h2>Bill Payment and Budget Tool</h2>
-      <img src="payment.jpg"></img>; 
+      <div id="image">
+        <img src="payment.jpg"></img>; 
+      </div>
+      
     </div>
 
   );

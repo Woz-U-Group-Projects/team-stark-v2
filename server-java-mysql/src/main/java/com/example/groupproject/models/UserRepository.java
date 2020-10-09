@@ -8,7 +8,9 @@ import com.example.groupproject.models.User;
 //Add 2 new files to src/main/java/com.fullstackproject.auth
 //All authentication & authorization code artifacts are in this package
 //Start by creating a User class & a UserRepository interface
-public interface UserRepository extends JpaRepository<User, Long> {
-	User findById(User id);
+public interface UserRepository extends JpaRepository<User, String> {
+	User findByEmail(String email);
+
+	void deleteByEmail(String email);
 }
 

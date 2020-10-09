@@ -25,7 +25,7 @@ class DeleteBill extends React.Component{
     getData = () => {
         console.log("In getData in delete bill");
         // Java Spring Boot uses port 8080
-        let url = "http://localhost:8080/billers/{this.id}";
+        let url = "http://localhost:8080/billers/";
         // C# dotnetcore uses port 5000
         //let url = "http://localhost:5000/projects";
         // Express uses port 3001 (react uses 3000)
@@ -38,7 +38,7 @@ class DeleteBill extends React.Component{
     deleteBiller = () => {
         console.log("In deleteBill");
         console.log("ID before axios.delete: " + this.id.current.value);
-        let url = "http://localhost:8080/billers/{this.id}";
+        let url = "http://localhost:8080/billers/${this.id}`";
        axios.delete(url, { id: this.id.current.value } ).then(_response => {
        // axios.put(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, billername: this.billername.current.value, date: this.date.current.value, paymentAmount: this.paymentAmount.current.value, paymentType: this.paymentType.current.value, Scheduled: this.scheduled.current.value } ).then(_response => {
         // refresh the data

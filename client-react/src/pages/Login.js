@@ -47,7 +47,7 @@ class Login extends React.Component {
         <input className="form-control" ref={this.password} type="password" />
         </label>
         <br></br>
-        <button type="button" className="btn btn-primary" onClick={this.getData}>Create</button>
+        <button type="button" className="btn btn-primary" onClick={this.getData}>Login</button>
 
       </div>
       </div>
