@@ -29,11 +29,11 @@ public class BillerController {
     return billerRepository.findAll();
   }
   
-  @GetMapping("/{id}")
-  public Biller getBillerById(@PathVariable Long id) {
-	  Biller foundBiller = billerRepository.findById(id).orElse(null);
-	  return foundBiller;
-  }
+//  @GetMapping("/{id}")
+//  public Biller getBillerById(@PathVariable Long id) {
+//	  Biller foundBiller = billerRepository.findById(id).orElse(null);
+//	  return foundBiller;
+//  }
 
   @PostMapping()
   public Biller addBiller(@RequestBody Biller biller) {
@@ -54,6 +54,7 @@ public class BillerController {
     	foundBiller.setAmount(biller.getAmount());
     	foundBiller.setDate(biller.getDate());
     	foundBiller.setPaymentType(biller.getPaymentType());
+    	foundBiller.setComplete(biller.getComplete());
     	billerRepository.save(foundBiller);
       return foundBiller;
     }

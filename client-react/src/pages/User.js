@@ -44,31 +44,9 @@ class User extends React.Component{
     });   
   };
 
-  // deleteUser = () => {
-  //   console.log ("In deleteUser");
-  //   let url = "http://localhost:8080/users/id";
-  //   // console.log("In delete user ID before axios.delete: " + this.id.current.value);
-  //   axios.delete(url, { id: this.id.current.value } ).then(_response => {
-  //   // axios.delete(url, { id: this.id.current.value, email: this.email.current.value, password: this.password.current.value, lastname: this.lastname.current.value, firstname: this.firstname.current.value }).then(_response => {
-  //   // refresh data
-  //   // console.log("In delete user after axios.delete email: " + this.email.current.value);
-  //   // console.log("password: " + this.password.current.value);
-  //   // console.log("lastname: " + this.lastname.current.value);
-  //   // console.log("firstname: " + this.firstname.current.value);
-  //   this.getData();
-  //   // empty input
-  //   // this.email.current.value = "";
-  //   // this.password.current.value= "";
-  //   // this.lastname.current.value = "";
-  //   // this.firstname.current.value = "";
-  //   });
-  // };
-  
   render() {
 
     return (
-      <div>
-        
           <div id="inputs">
             <h2>Bill Payment and Budget Tool</h2>
             <h3>Create User Account</h3>
@@ -90,15 +68,7 @@ class User extends React.Component{
             <br></br>
             <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>
             <br></br>
-            {/* <h3>Delete User Account</h3>
-            <label> ID:
-            <input className="form-control" ref={this.id} type="number" />
-            </label>
-            <br></br>
-            <button type="button" className="btn btn-danger" onClick={this.deleteUser}>Delete User</button>
-            <br></br> */}
           </div>
-      </div>
     );
     
   }
