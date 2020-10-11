@@ -18,7 +18,9 @@ public class GroupProjectApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-            	registry.addMapping("/**").allowedOrigins("http://localhost:3000","http://localhost:4200", "http://localhost:8080");
+            	registry.addMapping("/**").allowedOrigins("http://localhost:3000","http://localhost:4200", "http://localhost:8080")
+            	.allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS")
+            	.allowedHeaders("Cache-Control", "Content-Language", "Content-Type", "Expires", "Last-Modified", "Pragma");
             }
         };
     }

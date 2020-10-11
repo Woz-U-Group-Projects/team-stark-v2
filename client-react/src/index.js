@@ -10,17 +10,17 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 const App = () => (
   <Router>
     <div>
-      <ul>
-        <li>
+      <ul className="nav nav-pills nav-fill">
+        <li className="nav-item nav-link">
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/User">Register</Link>
-        </li>
-        <li>
+        <li className="nav-item nav-link">
           <Link to="/Login">Login</Link>
         </li>
-        <li>
+        <li className="nav-item nav-link">
+          <Link to="/User">Register</Link>
+        </li>
+        <li className="nav-item nav-link">
           <Link to="/Biller">Biller</Link>
         </li>
       </ul>
@@ -36,22 +36,5 @@ const App = () => (
 );
 
 render(<App />, document.getElementById('root'));
-
-// const Index = ({ pathname }) => {
-//     switch (pathname) {
-//       case '/User':
-//         return <User />;
-//       case '/Login':
-//         return <Login />;
-//       case '/Biller':
-//         return <Biller />;
-//       default:
-//         return <Home />;
-//     }
-//   };
-  
-//   let pathname = window.location.pathname;
-  
-//   ReactDOM.render(<Index pathname={pathname} />, document.getElementById('root'));
   
 serviceWorker.unregister();

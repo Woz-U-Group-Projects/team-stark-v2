@@ -13,7 +13,7 @@ class Login extends React.Component {
     }
 
   getData = () => {
-    console.log("In getData");
+    console.log("In getData for Login");
     // Java Spring Boot uses port 8080
     let url = "http://localhost:8080/users";
     // C# dotnetcore uses port 5000
@@ -24,7 +24,6 @@ class Login extends React.Component {
     
   };
  
-  
   render() {
 
     return (
@@ -40,8 +39,13 @@ class Login extends React.Component {
         <input className="form-control" ref={this.password} type="password" />
         </label>
         <br></br>
-        <button type="button" className="btn btn-primary" onClick={this.getData}>Create</button>
+        <button type="button" className="btn btn-primary" onClick={this.getData}>Login</button>
 
+      </div>
+      <div className="row justify-content-center">
+        <span id="image">
+          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRXx3_7HGNAdOSVLJPmkpMm_gI0MBiCmeldlA&usqp=CAU'/>
+        </span> 
       </div>
       </div>
     );
