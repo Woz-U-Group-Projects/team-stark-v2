@@ -7,6 +7,7 @@ class Biller extends React.Component{
   constructor(props) {
     super(props);
     this.state = { Biller: [] };
+    this.id = React.createRef();
     this.billerId = React.createRef();
     this.accountnumber = React.createRef();
     this.amount = React.createRef();
@@ -15,7 +16,6 @@ class Biller extends React.Component{
     this.paymentType = React.createRef();
   }
   
-
   getData = () => {
     console.log("In getData");
     // Java Spring Boot uses port 8080
@@ -45,22 +45,22 @@ class Biller extends React.Component{
 
   deleteBiller = () => {
     console.log("In deleteBiller");
+    console.log("id: " + this.id.current.value);
     this.testAll();
-    let url = "http://localhost:8080/billers/{id}";
-    axios.delete(url, { 
-      accountnumber: this.accountnumber.current.value, 
-      amount: this.amount.current.value, 
-      billername: this.billername.current.value, 
-      date: this.date.current.value, 
-      paymentType: this.paymentType.current.value } ).then(_response => { 
-     
+   let url = "http://localhost:8080/billers/${this.id.current.value}";
+    //let url = "http://localhost:8080/billers";
+    //axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    axios.delete(url 
+    /*, { 
+    //   accountnumber: this.accountnumber.current.value, 
+    //   amount: this.amount.current.value, 
+    //   billername: this.billername.current.value, 
+    //   date: this.date.current.value, 
+    //   paymentType: this.paymentType.current.value } */
+    ).then(_response => { 
+//axios.delete(url, { data: { id: this.id.current.value }, headers: { "Authorization": "***" }}).then(_response => {
         
       this.getData();
-      // this.accountnumber.current.value = "";
-      // this.amount.current.value = "";
-      // this.billername.current.value = "";
-      // this.date.current.value = "";
-      // this.paymentType.current.value = "";
     });    
   };
 
@@ -74,6 +74,11 @@ class Biller extends React.Component{
   
   testAll(){
     console.log("In testAll");
+    if(this.id.current.value !== ""){
+      console.log("id: " + this.id.current.value);
+    }else{
+      console.log("id is NULL");
+    }
     if(this.accountnumber.current.value !== ""){
       console.log("accountnumber: " + this.accountnumber.current.value);}
     else{
@@ -131,11 +136,19 @@ class Biller extends React.Component{
         <button type="button" className="btn btn-primary" onClick={this.addBiller}>Create</button>
         <br></br>
         <label> Delete Biller :
-          <input className="form-control" ref={this.paymentType} type="text" />
+          <input className="form-control" ref={this.id} type="number" />
         </label>
         <br></br>
         <button type="button" className="btn btn-danger" onClick={this.deleteBiller}>Delete</button>
       </div>
+      <div className="row justify-content-center">
+        <span id="image">
+          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRXx3_7HGNAdOSVLJPmkpMm_gI0MBiCmeldlA&usqp=CAU'/>
+        </span>
+        <div><a href="https://www.bankrate.com/calculators/managing-debt/minimum-payment-calculator.aspx" target="_blank">www.bankrate.com</a></div>
+      </div>
+      {/* <div><a href="https://www.bankrate.com/calculators/managing-debt/minimum-payment-calculator.aspx" target="_blank">www.bankrate.com</a></div> */}
+
     </div>
     );
   }

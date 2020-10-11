@@ -70,11 +70,14 @@ class User extends React.Component{
         </label>
         <br></br>
         <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>
-
+      </div>
+      <div className="row justify-content-center">
+        <span id="image">
+          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRXx3_7HGNAdOSVLJPmkpMm_gI0MBiCmeldlA&usqp=CAU'/>
+        </span> 
       </div>
       </div>
-    );
-    
+    ); 
   }
 }
 export default User;
