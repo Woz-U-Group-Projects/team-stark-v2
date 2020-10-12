@@ -30,7 +30,8 @@ class Login extends React.Component {
       <div>
         
       <div id="inputs">
-        <h2>Login</h2>
+      <h2>Bill Payment and Budget Tool</h2>
+        <h3>Login</h3>
         <label> Email Address:
         <input className="form-control" ref={this.email} type="text" />
         </label>

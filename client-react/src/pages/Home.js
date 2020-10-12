@@ -4,7 +4,8 @@ import '../task.min.css';
   
 const Home = () => (
     <div>
-      <h2>Home</h2>
+      <h2>Bill Payment and Budget Tool</h2>
+      <h3>Home</h3>
       <p>
           Welcome! 
           This Bill Payment application has been designed to enable YOU to manage YOUR budget by capturing YOUR bill names, 
