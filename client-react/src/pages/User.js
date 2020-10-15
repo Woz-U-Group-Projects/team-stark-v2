@@ -9,11 +9,11 @@ class User extends React.Component{
   constructor(props) {
     super(props);
     this.state = { User: [] };
+    this.id = React.createRef();
     this.email = React.createRef();
     this.password = React.createRef();
     this.lastname = React.createRef();
-    this.firstname = React.createRef();
-    
+    this.firstname = React.createRef();  
   }
 
   getData = () => {
@@ -32,8 +32,8 @@ class User extends React.Component{
     console.log("In addUser");
     // this.testAll();
     let url = "http://localhost:8080/users";
-    axios.post(url, {email: this.email.current.value, password: this.password.current.value, lastname: this.lastname.current.value, firstname: this.firstname.current.value } ).then(_response => { 
-     
+    axios.post(url, {email: this.email.current.value, password: this.password.current.value, 
+      lastname: this.lastname.current.value, firstname: this.firstname.current.value } ).then(_response => { 
       this.getData();
       this.email.current.value = "";
       this.password.current.value = "";
@@ -41,41 +41,53 @@ class User extends React.Component{
       this.lastname.current.value = ""; 
       window.open("/Login");
     });  
-    
   };
- 
-  
-  render() {
 
+  deleteUser = () => {
+    console.log("In deleteUser");
+    console.log("id: " + this.id.current.value);
+    let url = `http://localhost:8080/users/${this.id.current.value}`;
+    axios.delete(url).then(_response => { 
+      this.getData();
+      this.id.current.value = "";
+    });    
+  };
+  
+  render() { 
     return (
-      <div>
-        
-      <div id="inputs">
-        <h2>Bill Payment and Budget Tool</h2>
-        <h3>Create User Account</h3>
-        <label> First Name
-        <input className="form-control" ref={this.lastname} type="text" />
-        </label>
-        <br></br>
-        <label> Last Name
-        <input className="form-control" ref={this.firstname} type="text" />
-        </label>
-        <br></br>
-        <label> Email Address:
-        <input className="form-control" ref={this.email} type="text" />
-        </label>
-        <br></br>
-        <label> Password:
-        <input className="form-control" ref={this.password} type="password" />
-        </label>
-        <br></br>
-        <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>
-      </div>
-      <div className="row justify-content-center">
-        <span id="image">
-          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRXx3_7HGNAdOSVLJPmkpMm_gI0MBiCmeldlA&usqp=CAU'/>
-        </span> 
-      </div>
+      <div>    
+        <div id="inputs">
+          <h2>Bill Payment and Budget Tool</h2>
+          <h3>Create User Account</h3>
+          <label> First Name
+          <input className="form-control" ref={this.lastname} type="text" />
+          </label>
+          <br></br>
+          <label> Last Name
+          <input className="form-control" ref={this.firstname} type="text" />
+          </label>
+          <br></br>
+          <label> Email Address:
+          <input className="form-control" ref={this.email} type="text" />
+          </label>
+          <br></br>
+          <label> Password:
+          <input className="form-control" ref={this.password} type="password" />
+          </label>
+          <br></br>
+          <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>
+          <br></br>
+          <label> Delete User :
+            <input className="form-control" ref={this.id} type="number" />
+          </label>
+          <br></br>
+          <button type="button" className="btn btn-danger" onClick={this.deleteUser}>Delete</button>
+        </div>
+        <div className="row justify-content-center">
+          <span id="image">
+            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRXx3_7HGNAdOSVLJPmkpMm_gI0MBiCmeldlA&usqp=CAU'/>
+          </span> 
+        </div>
       </div>
     ); 
   }

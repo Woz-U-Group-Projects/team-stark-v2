@@ -21,7 +21,8 @@ class Login extends React.Component {
     // Express uses port 3001 (react uses 3000)
     //let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ User: response.data }));
-    
+    console.log("email input value: " + this.email.current.value);
+    console.log("password input value: " + this.password.current.value);
   };
  
   render() {

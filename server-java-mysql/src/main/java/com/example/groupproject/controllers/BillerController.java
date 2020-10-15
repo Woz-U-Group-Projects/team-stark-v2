@@ -45,7 +45,7 @@ public class BillerController {
   }
 
   @PutMapping("/{id}")
-  public Biller updateProject(@PathVariable Long id, @RequestBody Biller biller) {
+  public Biller updateBill(@PathVariable Long id, @RequestBody Biller biller) {
     Biller foundBiller = billerRepository.findById(id).orElse(null);
     if (foundBiller != null) {
     	foundBiller.setAccountnumber(biller.getAccountnumber());

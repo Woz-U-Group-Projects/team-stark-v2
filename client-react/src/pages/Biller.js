@@ -33,7 +33,9 @@ class Biller extends React.Component{
     console.log("In addBiller");
     // this.testAll();
     let url = "http://localhost:8080/billers";
-    axios.post(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, billername: this.billername.current.value, date: this.date.current.value, paymentType: this.paymentType.current.value } ).then(_response => {
+    axios.post(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, 
+      billername: this.billername.current.value, date: this.date.current.value, 
+      paymentType: this.paymentType.current.value } ).then(_response => {
       // refresh the data
       console.log("After axios function call");
       // this.testAll();
@@ -47,20 +49,10 @@ class Biller extends React.Component{
     console.log("In deleteBiller");
     console.log("id: " + this.id.current.value);
     this.testAll();
-   let url = "http://localhost:8080/billers/${this.id.current.value}";
-    //let url = "http://localhost:8080/billers";
-    //axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
-    axios.delete(url 
-    /*, { 
-    //   accountnumber: this.accountnumber.current.value, 
-    //   amount: this.amount.current.value, 
-    //   billername: this.billername.current.value, 
-    //   date: this.date.current.value, 
-    //   paymentType: this.paymentType.current.value } */
-    ).then(_response => { 
-//axios.delete(url, { data: { id: this.id.current.value }, headers: { "Authorization": "***" }}).then(_response => {
-        
+    let url = `http://localhost:8080/billers/${this.id.current.value}`;
+    axios.delete(url).then(_response => { 
       this.getData();
+      this.id.current.value = "";
     });    
   };
 
@@ -147,8 +139,6 @@ class Biller extends React.Component{
         </span>
         <div><a href="https://www.bankrate.com/calculators/managing-debt/minimum-payment-calculator.aspx" target="_blank">www.bankrate.com</a></div>
       </div>
-      {/* <div><a href="https://www.bankrate.com/calculators/managing-debt/minimum-payment-calculator.aspx" target="_blank">www.bankrate.com</a></div> */}
-
     </div>
     );
   }
