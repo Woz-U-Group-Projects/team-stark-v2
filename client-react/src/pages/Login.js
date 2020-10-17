@@ -21,8 +21,19 @@ class Login extends React.Component {
     // Express uses port 3001 (react uses 3000)
     //let url = "http://localhost:3001/tasks";
     axios.get(url).then(response => this.setState({ User: response.data }));
-    console.log("email input value: " + this.email.current.value);
-    console.log("password input value: " + this.password.current.value);
+  };
+
+  getLogin = () => {
+    console.log("In getLogin");
+    console.log("email: " + this.email.current.value);
+    console.log("password: " + this.password.current.value);
+    let url = `http://localhost:8080/users/${this.email.current.value}/${this.password.current.value}`;
+    axios.get(url).then(_response => { 
+      this.getData();
+      this.email.current.value = "";
+      this.password.current.value = "";
+      window.open("/Biller");
+    });    
   };
  
   render() {
@@ -41,7 +52,7 @@ class Login extends React.Component {
         <input className="form-control" ref={this.password} type="password" />
         </label>
         <br></br>
-        <button type="button" className="btn btn-primary" onClick={this.getData}>Login</button>
+        <button type="button" className="btn btn-primary" onClick={this.getLogin}>Login</button>
 
       </div>
       <div className="row justify-content-center">

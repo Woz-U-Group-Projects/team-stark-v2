@@ -10,5 +10,7 @@ import com.example.groupproject.models.User;
 //Start by creating a User class & a UserRepository interface
 public interface UserRepository extends JpaRepository<User, Long> {
 	User findById(User id);
+
+	User findByEmail(String email);
 }
 

@@ -53,6 +53,9 @@ public class BillerController {
     	foundBiller.setAmount(biller.getAmount());
     	foundBiller.setDate(biller.getDate());
     	foundBiller.setPaymentType(biller.getPaymentType());
+    	foundBiller.setPaymentCancel(biller.isPaymentCancel());
+    	foundBiller.setScheduled(biller.isScheduled());
+    	foundBiller.setPaymentAmount(biller.getPaymentAmount());
     	billerRepository.save(foundBiller);
       return foundBiller;
     }

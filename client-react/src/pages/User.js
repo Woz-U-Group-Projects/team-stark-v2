@@ -30,10 +30,11 @@ class User extends React.Component{
 
   addUser = () => {
     console.log("In addUser");
-    // this.testAll();
     let url = "http://localhost:8080/users";
-    axios.post(url, {email: this.email.current.value, password: this.password.current.value, 
-      lastname: this.lastname.current.value, firstname: this.firstname.current.value } ).then(_response => { 
+    axios.post(url, 
+      { email: this.email.current.value, password: this.password.current.value, 
+        lastname: this.lastname.current.value, firstname: this.firstname.current.value 
+      } ).then(_response => { 
       this.getData();
       this.email.current.value = "";
       this.password.current.value = "";
@@ -50,6 +51,23 @@ class User extends React.Component{
     axios.delete(url).then(_response => { 
       this.getData();
       this.id.current.value = "";
+    });    
+  };
+  
+  updateUser = () => {
+    console.log("In updateUser");
+    console.log("id: " + this.id.current.value);
+    let url = `http://localhost:8080/users/${this.id.current.value}`; 
+    axios.put(url, 
+      { email: this.email.current.value, password: this.password.current.value, 
+        lastname: this.lastname.current.value, firstname: this.firstname.current.value 
+      }).then(_response => { 
+        this.getData();
+        this.id.current.value = "";
+        this.email.current.value = "";
+        this.password.current.value = "";
+        this.firstname.current.value = "";
+        this.lastname.current.value = ""; 
     });    
   };
   
@@ -77,11 +95,36 @@ class User extends React.Component{
           <br></br>
           <button type="button" className="btn btn-primary" onClick={this.addUser}>Create</button>
           <br></br>
-          <label> Delete User :
+          <h3>Delete User Account</h3>
+          <label> User ID :
             <input className="form-control" ref={this.id} type="number" />
           </label>
           <br></br>
           <button type="button" className="btn btn-danger" onClick={this.deleteUser}>Delete</button>
+          <br></br>
+          <h3>Update User Account</h3>
+          <label> User ID :
+            <input className="form-control" ref={this.id} type="number" />
+          </label>
+          <br></br>
+          <label> First Name
+          <input className="form-control" ref={this.lastname} type="text" />
+          </label>
+          <br></br>
+          <label> Last Name
+          <input className="form-control" ref={this.firstname} type="text" />
+          </label>
+          <br></br>
+          <label> Email Address:
+          <input className="form-control" ref={this.email} type="text" />
+          </label>
+          <br></br>
+          <label> Password:
+          <input className="form-control" ref={this.password} type="password" />
+          </label>
+          <br></br>
+          <button type="button" className="btn btn-primary" onClick={this.updateUser}>Update</button>
+          <br></br>
         </div>
         <div className="row justify-content-center">
           <span id="image">

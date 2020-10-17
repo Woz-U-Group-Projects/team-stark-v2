@@ -8,12 +8,14 @@ class Biller extends React.Component{
     super(props);
     this.state = { Biller: [] };
     this.id = React.createRef();
-    this.billerId = React.createRef();
     this.accountnumber = React.createRef();
     this.amount = React.createRef();
     this.billername = React.createRef(); 
     this.date = React.createRef();
+    this.paymentAmount = React.createRef();
+    this.paymentCancel = React.createRef();
     this.paymentType = React.createRef();
+    this.scheduled = React.createRef();
   }
   
   getData = () => {
@@ -31,7 +33,7 @@ class Biller extends React.Component{
 
   addBiller = () => {
     console.log("In addBiller");
-    // this.testAll();
+    this.testAll();
     let url = "http://localhost:8080/billers";
     axios.post(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, 
       billername: this.billername.current.value, date: this.date.current.value, 
@@ -48,11 +50,26 @@ class Biller extends React.Component{
   deleteBiller = () => {
     console.log("In deleteBiller");
     console.log("id: " + this.id.current.value);
-    this.testAll();
     let url = `http://localhost:8080/billers/${this.id.current.value}`;
     axios.delete(url).then(_response => { 
       this.getData();
       this.id.current.value = "";
+    });    
+  };
+
+  updateBiller = () => {
+    console.log("In updateBiller");
+    console.log("id: " + this.id.current.value);
+    this.testAll();
+    let url = `http://localhost:8080/billers/${this.id.current.value}`; 
+    axios.put(url, 
+      { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, 
+        billername: this.billername.current.value, date: this.date.current.value, 
+        paymentType: this.paymentType.current.value
+      }).then(_response => { 
+        this.getData();
+        this.id.current.value = "";
+        this.emptyInput();
     });    
   };
 
@@ -105,33 +122,61 @@ class Biller extends React.Component{
       <div id="inputs">
         <h2>Bill Payment and Budget Tool</h2>
         <h3>Add Biller</h3>
-        <label> Account Number:
-        <input className="form-control" ref={this.accountnumber} type="number" />
-        </label>
-        <br></br>
-        <label> Biller Name:
-        <input className="form-control" ref={this.billername} type="text" />
-        </label>
-        <br></br>
-        <label> Bill Amount:
-          <input className="form-control" ref={this.amount} type="number" />
-        </label>
-        <br></br>
-        <label> Bill Date :
-          <input className="form-control" ref={this.date} type="date" />
-        </label>
-        <br></br>
-        <label> Payment Type :
-          <input className="form-control" ref={this.paymentType} type="text" />
-        </label>
-        <br></br>
-        <button type="button" className="btn btn-primary" onClick={this.addBiller}>Create</button>
-        <br></br>
-        <label> Delete Biller :
-          <input className="form-control" ref={this.id} type="number" />
-        </label>
-        <br></br>
-        <button type="button" className="btn btn-danger" onClick={this.deleteBiller}>Delete</button>
+          <label> Account Number:
+            <input className="form-control" ref={this.accountnumber} type="number" />
+            </label>
+            <br></br>
+            <label> Biller Name:
+            <input className="form-control" ref={this.billername} type="text" />
+            </label>
+            <br></br>
+            <label> Bill Amount:
+              <input className="form-control" ref={this.amount} type="number" />
+            </label>
+            <br></br>
+            <label> Bill Date :
+              <input className="form-control" ref={this.date} type="date" />
+            </label>
+            <br></br>
+            <label> Payment Type :
+              <input className="form-control" ref={this.paymentType} type="text" />
+            </label>
+            <br></br>
+            <button type="button" className="btn btn-primary" onClick={this.addBiller}>Create</button>
+            <br></br>
+        <h3>Delete Biller</h3>
+            <label> Biller ID :
+              <input className="form-control" ref={this.id} type="number" />
+            </label>
+            <br></br>
+            <button type="button" className="btn btn-danger" onClick={this.deleteBiller}>Delete</button>
+        <h3>Update Biller</h3>
+            <label> Biller ID :
+              <input className="form-control" ref={this.id} type="number" />
+            </label>
+            <br></br>
+            <label> Account Number:
+            <input className="form-control" ref={this.accountnumber} type="number" />
+            </label>
+            <br></br>
+            <label> Biller Name:
+            <input className="form-control" ref={this.billername} type="text" />
+            </label>
+            <br></br>
+            <label> Bill Amount:
+              <input className="form-control" ref={this.amount} type="number" />
+            </label>
+            <br></br>
+            <label> Bill Date :
+              <input className="form-control" ref={this.date} type="date" />
+            </label>
+            <br></br>
+            <label> Payment Type :
+              <input className="form-control" ref={this.paymentType} type="text" />
+            </label>
+            <br></br>
+            <button type="button" className="btn btn-primary" onClick={this.updateBiller}>Update</button>
+            <br></br>
       </div>
       <div className="row justify-content-center">
         <span id="image">

@@ -32,6 +32,7 @@ public class Biller {
 	
 	@Column(columnDefinition = "boolean default false")
 	private boolean scheduled;
+	@Column(columnDefinition = "boolean default false")
 	private boolean paymentCancel;
 	
 	@Column(nullable = false, unique = true)

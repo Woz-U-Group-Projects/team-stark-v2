@@ -29,6 +29,17 @@ public class UserController {
   public List<User> getUsers() {
     return userRepository.findAll();
   }
+  
+  @GetMapping("/{email}/{password}")
+  public User getUser(@PathVariable String email, @PathVariable String password) {
+    User foundUser = userRepository.findByEmail(email);
+    if (foundUser != null) {
+    	if( foundUser.getPassword().matches(password)) {
+    		return foundUser;
+    	}
+    }
+    return null;
+  }
 
   @PostMapping()
   public User addUser(@RequestBody User user) {
