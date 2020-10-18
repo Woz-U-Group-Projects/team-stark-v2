@@ -49,6 +49,7 @@ class UpdateUser extends React.Component{
     return (
       <div>    
         <div id="inputs">
+        <h2>Bill Payment and Budget Tool</h2>
           <h3>Update User Account</h3>
           <label> User ID :
             <input className="form-control" ref={this.id} type="number" />
