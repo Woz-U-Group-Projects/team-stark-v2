@@ -42,6 +42,7 @@ public class User {
 	 */
 	public void setId(Long id) {
 		this.id = id;
+		System.out.println("In User model set id is: " + this.getId());
 	}
 
 	public String getPassword() {
@@ -50,6 +51,7 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+		System.out.println("In User model set password is: " + this.getPassword());
 	}
 
 	/**
@@ -72,6 +74,7 @@ public class User {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+		System.out.println("In User model set lastname is: " + this.getLastname());
 	}
 
 	public String getEmail() {
@@ -80,6 +83,7 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+		System.out.println("In User model set email is: " + this.getEmail());
 	}
 
 	public String getFirstname() {
@@ -88,5 +92,6 @@ public class User {
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
+		System.out.println("In User model set firstname is: " + this.getFirstname());
 	}
 }

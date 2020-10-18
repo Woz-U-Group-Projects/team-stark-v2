@@ -32,7 +32,7 @@ class Login extends React.Component {
       this.getData();
       this.email.current.value = "";
       this.password.current.value = "";
-      window.open("/Biller");
+      window.open("/UpdateUser");
     });    
   };
  

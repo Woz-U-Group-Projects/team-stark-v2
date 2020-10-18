@@ -33,16 +33,20 @@ public class UserController {
   @GetMapping("/{email}/{password}")
   public User getUser(@PathVariable String email, @PathVariable String password) {
     User foundUser = userRepository.findByEmail(email);
+    
     if (foundUser != null) {
     	if( foundUser.getPassword().matches(password)) {
+    		 System.out.println("In getUser controller founduser.getPassword() " + foundUser.getEmail() + " " + foundUser.getPassword());
     		return foundUser;
     	}
     }
+    System.out.println("In getUser controller returning null ");
     return null;
   }
 
   @PostMapping()
   public User addUser(@RequestBody User user) {
+	  System.out.println("In addUser controller before save user: ");
 	    return userRepository.save(user);
   }
   
