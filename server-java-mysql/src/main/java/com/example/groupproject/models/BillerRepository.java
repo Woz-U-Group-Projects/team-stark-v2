@@ -9,4 +9,5 @@ import com.example.groupproject.models.Biller;
 //Start by creating a Biller class & a BillerRepository interface
 public interface BillerRepository extends JpaRepository<Biller, Long> {
 
+
 }

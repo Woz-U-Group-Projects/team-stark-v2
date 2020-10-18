@@ -1,16 +1,26 @@
 import React from 'react';
-import Header from '../components/Header';
-
-function Home () {
-    return(
-        <div className="Home">
-            <Header title="Bill Payment and Budget Tool" />; 
-            <img src="payment.jpg"></img>; 
-        </div>
-    );    
-} 
-
+import '../index.css';
+import '../task.min.css';
+  
+const Home = () => (
+    <div>
+      <h2>Bill Payment and Budget Tool</h2>
+      <h3>Home</h3>
+      <p>
+          Welcome! 
+          This Bill Payment application has been designed to enable YOU to manage YOUR budget by capturing YOUR bill names, 
+          addresses, account numbers, amounts owed, due dates and payment schedule dates. 
+          YOU can also capture YOUR credit card account numbers, interest rates, billing cycles and minimum required payments and 
+          use this information to calculate YOUR total payments and interest amounts given length of time taken to pay off YOUR 
+          credit cards. 
+          Please be assured that our development staff have taken YOUR security and YOUR privacy needs into consideration.
+      </p>
+      <div className="row justify-content-center">
+        <span id="image">
+          <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRXx3_7HGNAdOSVLJPmkpMm_gI0MBiCmeldlA&usqp=CAU'/>
+        </span> 
+      </div>
+    </div>
+  );
     
-
-
 export default Home;

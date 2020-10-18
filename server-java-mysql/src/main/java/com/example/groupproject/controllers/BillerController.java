@@ -45,7 +45,7 @@ public class BillerController {
   }
 
   @PutMapping("/{id}")
-  public Biller updateProject(@PathVariable Long id, @RequestBody Biller biller) {
+  public Biller updateBill(@PathVariable Long id, @RequestBody Biller biller) {
     Biller foundBiller = billerRepository.findById(id).orElse(null);
     if (foundBiller != null) {
     	foundBiller.setAccountnumber(biller.getAccountnumber());
@@ -53,6 +53,9 @@ public class BillerController {
     	foundBiller.setAmount(biller.getAmount());
     	foundBiller.setDate(biller.getDate());
     	foundBiller.setPaymentType(biller.getPaymentType());
+    	foundBiller.setPaymentCancel(biller.isPaymentCancel());
+    	foundBiller.setScheduled(biller.isScheduled());
+    	foundBiller.setPaymentAmount(biller.getPaymentAmount());
     	billerRepository.save(foundBiller);
       return foundBiller;
     }

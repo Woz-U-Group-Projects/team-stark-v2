@@ -3,10 +3,10 @@ import axios from "axios";
 import '../index.css';
 import '../task.min.css';
 
-class Biller extends React.Component{
+class UpdateBiller extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { Biller: [] };
+    this.state = { UpdateBiller: [] };
     this.id = React.createRef();
     this.accountnumber = React.createRef();
     this.amount = React.createRef();
@@ -31,32 +31,7 @@ class Biller extends React.Component{
   //  this.testAll();
   };
 
-  addBiller = () => {
-    console.log("In addBiller");
-    this.testAll();
-    let url = "http://localhost:8080/billers";
-    axios.post(url, { accountnumber: this.accountnumber.current.value, amount: this.amount.current.value, 
-      billername: this.billername.current.value, date: this.date.current.value, 
-      paymentType: this.paymentType.current.value } ).then(_response => {
-      // refresh the data
-      console.log("After axios function call");
-      // this.testAll();
-      this.getData();
-      // empty the input
-      this.emptyInput();
-    });
-  };
-
-  deleteBiller = () => {
-    console.log("In deleteBiller");
-    console.log("id: " + this.id.current.value);
-    let url = `http://localhost:8080/billers/${this.id.current.value}`;
-    axios.delete(url).then(_response => { 
-      this.getData();
-      this.id.current.value = "";
-    });    
-  };
-
+  
   updateBiller = () => {
     console.log("In updateBiller");
     console.log("id: " + this.id.current.value);
@@ -121,36 +96,7 @@ class Biller extends React.Component{
         
       <div id="inputs">
         <h2>Bill Payment and Budget Tool</h2>
-        <h3>Add Biller</h3>
-          <label> Account Number:
-            <input className="form-control" ref={this.accountnumber} type="number" />
-            </label>
-            <br></br>
-            <label> Biller Name:
-            <input className="form-control" ref={this.billername} type="text" />
-            </label>
-            <br></br>
-            <label> Bill Amount:
-              <input className="form-control" ref={this.amount} type="number" />
-            </label>
-            <br></br>
-            <label> Bill Date :
-              <input className="form-control" ref={this.date} type="date" />
-            </label>
-            <br></br>
-            <label> Payment Type :
-              <input className="form-control" ref={this.paymentType} type="text" />
-            </label>
-            <br></br>
-            <button type="button" className="btn btn-primary" onClick={this.addBiller}>Create</button>
-            <br></br>
-        <h3>Delete Biller</h3>
-            <label> Biller ID :
-              <input className="form-control" ref={this.id} type="number" />
-            </label>
-            <br></br>
-            <button type="button" className="btn btn-danger" onClick={this.deleteBiller}>Delete</button>
-        {/* <h3>Update Biller</h3>
+        <h3>Update Biller</h3>
             <label> Biller ID :
               <input className="form-control" ref={this.id} type="number" />
             </label>
@@ -176,7 +122,7 @@ class Biller extends React.Component{
             </label>
             <br></br>
             <button type="button" className="btn btn-primary" onClick={this.updateBiller}>Update</button>
-            <br></br> */}
+            <br></br>
       </div>
       <div className="row justify-content-center">
         <span id="image">
@@ -188,4 +134,4 @@ class Biller extends React.Component{
     );
   }
 }
-export default Biller;
+export default UpdateBiller;

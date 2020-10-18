@@ -3,19 +3,7 @@ package com.example.groupproject.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
-// Sheila comment: CrossOrigin annotation blocked out b/c not used
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-//import org.springframework.web.bind.annotation.CrossOrigin;
-=======
-// Sheila comment: CrossOrigin annotation blocked out b/c not used
-// import org.springframework.web.bind.annotation.CrossOrigin;
->>>>>>> dev
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-//Sheila comment: RequestParam annotation blocked out b/c not used
-// import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.example.groupproject.models.User;
 import com.example.groupproject.models.UserRepository;
@@ -42,9 +29,24 @@ public class UserController {
   public List<User> getUsers() {
     return userRepository.findAll();
   }
+  
+  @GetMapping("/{email}/{password}")
+  public User getUser(@PathVariable String email, @PathVariable String password) {
+    User foundUser = userRepository.findByEmail(email);
+    
+    if (foundUser != null) {
+    	if( foundUser.getPassword().matches(password)) {
+    		 System.out.println("In getUser controller founduser.getPassword() " + foundUser.getEmail() + " " + foundUser.getPassword());
+    		return foundUser;
+    	}
+    }
+    System.out.println("In getUser controller returning null ");
+    return null;
+  }
 
   @PostMapping()
   public User addUser(@RequestBody User user) {
+	  System.out.println("In addUser controller before save user: ");
 	    return userRepository.save(user);
   }
   
@@ -54,13 +56,13 @@ public class UserController {
   }
 
   @PutMapping("/{id}")
-  public User updateProject(@PathVariable Long id, @RequestBody User user) {
+  public User updateUser(@PathVariable Long id, @RequestBody User user) {
     User foundUser = userRepository.findById(id).orElse(null);
     if (foundUser != null) {
     	foundUser.setEmail(user.getEmail());
     	foundUser.setPassword(user.getPassword());
-    	foundUser.setFirstName(user.getFirstName());
-    	foundUser.setLastName(user.getLastName());
+    	foundUser.setFirstname(user.getFirstname());
+    	foundUser.setLastname(user.getLastname());
     
     	userRepository.save(foundUser);
       return foundUser;
